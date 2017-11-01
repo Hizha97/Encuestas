@@ -8,12 +8,20 @@
 
 class RadioField extends Field
 {
+    protected $name;
+
+    public function __construct($id, $verbose_name, $name, $value = '', $styleClasses = '')
+    {
+        parent::__construct($id, $verbose_name, $value, $styleClasses);
+        $this->name = $name;
+    }
+
 
     public function render()
     {
         echo "<p>";
-        echo "<input type='radio' id='" . $this->name . "' />";
-        echo "<label for='" . $this->name . "'>" . $this->verbose_name . "</label>";
+        echo sprintf("<input type='%s' id='%s' name='%s' />", "radio", $this->id, $this->name);
+        echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
         echo '</p>';
     }
 }
