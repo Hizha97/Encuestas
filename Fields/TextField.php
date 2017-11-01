@@ -15,6 +15,7 @@ class TextField extends Field
         echo sprintf("<div class='%s %s'>", 'input-field', $this->styleClasses);
         echo sprintf("<input type='%s' id='%s'>", "text", $this->id);
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
+        echo "hola";
         echo '</div>';
     }
 }
