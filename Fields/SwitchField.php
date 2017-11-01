@@ -10,6 +10,6 @@ class SwitchField extends Field
 {
     public  function render()
     {
-        echo "hola";
+
     }
 }

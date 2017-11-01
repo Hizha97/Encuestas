@@ -15,8 +15,8 @@ class DateField extends Field
     public function render()
     {
         echo sprintf("<div class='%s %s'>", 'input-field', $this->styleClasses);
-        echo sprintf("<input type='%s' class='%s' name='%s' id='%s'>", "text", "datepicker", $this->name, $this->id);
-        echo sprintf("<label for='%s'> %s </label>", $this->name, $this->verbose_name);
+        echo sprintf("<input type='%s' class='%s' id='%s'>", "text", "datepicker", $this->id);
+        echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
         echo '</div>';
     }
 }
