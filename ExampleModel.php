@@ -12,6 +12,8 @@ require_once ('Fields/PasswordField.php');
 require_once ('Fields/CheckboxField.php');
 require_once ('Fields/RadioField.php');
 require_once ('Fields/SwitchField.php');
+require_once ('Fields/ChoiceField.php');
+
 
 class ExampleModel
 {
@@ -23,6 +25,7 @@ class ExampleModel
     public static $radio2;
     public static $radio3;
     public static $switch;
+    public static $choice;
 }
 
 
@@ -34,3 +37,4 @@ ExampleModel::$radio1 = new RadioField("Radio1", "radio1", "grupo1", "col s6");
 ExampleModel::$radio2 = new RadioField("Radio2", "radio2", "grupo1", "col s6");
 ExampleModel::$radio3 = new RadioField("Radio3", "radio3", "grupo1", "col s6");
 ExampleModel::$switch = new SwitchField("Switch", "switch", "", "col s6", "on", "off");
+ExampleModel::$choice = new ChoiceField("Sexo", array("Hombre", "Mujer", "Otros"), '', '');
