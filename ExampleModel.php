@@ -18,9 +18,9 @@ class ExampleModel
     public static $texto;
     public static $password;
     public static $campoAdicional;
-    public static $checkbox;/*
-    public static $radio;
-    public static $switch;*/
+    public static $checkbox;
+   // public static $radio;
+    public static $switch;
 }
 
 

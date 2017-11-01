@@ -8,8 +8,13 @@
 
 class SwitchField extends Field
 {
+    protected $label1;
+    protected $label2;
+
     public  function render()
     {
-
+        echo sprintf("<div class='switch'>");
+        echo sprintf("<label> %s <input type='%s'> <span class='%s'></span> %s </label>", this->$label1, "checkbox", "lever", this->label2);
+        echo "</div>";
     }
 }
