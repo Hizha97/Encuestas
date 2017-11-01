@@ -7,7 +7,7 @@
  */
 
 require_once ('Fields/DateField.php');
-require_once ('Fields/TextField.php');
+require_once('Fields/CharField.php');
 require_once ('Fields/PasswordField.php');
 require_once ('Fields/CheckboxField.php');
 require_once ('Fields/RadioField.php');
@@ -30,7 +30,7 @@ class ExampleModel
 
 
 ExampleModel::$campoAdicional = new DateField("fecha1", "Fecha", "fecha", "", "col s6");
-ExampleModel::$texto = new TextField("texto1", "Texto", "texto", "", "col s6");
+ExampleModel::$texto = new CharField("texto1", "Texto", "texto", "", "col s6");
 ExampleModel::$password = new PasswordField("contraseña", "Contraseña", "password", "", "col s6");
 ExampleModel::$checkbox = new CheckboxField("check1", "Check si antonio es un xulo", "checkbox", "", "col s6");
 ExampleModel::$radio1 = new RadioField("Radio1", "radio1", "grupo1", "col s6");

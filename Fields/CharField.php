@@ -8,7 +8,7 @@
 
 require_once ('Field.php');
 
-class TextField extends Field
+class CharField extends Field
 {
     public function render()
     {
