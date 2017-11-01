@@ -21,9 +21,6 @@ class ExampleModel
     public static $password;
     public static $campoAdicional;
     public static $checkbox;
-    public static $radio1;
-    public static $radio2;
-    public static $radio3;
     public static $switch;
     public static $choice;
 }
@@ -33,8 +30,5 @@ ExampleModel::$campoAdicional = new DateField("fecha1", "Fecha", "fecha", "", "c
 ExampleModel::$texto = new CharField("texto1", "Texto", "texto", "", "col s6");
 ExampleModel::$password = new PasswordField("contraseña", "Contraseña", "password", "", "col s6");
 ExampleModel::$checkbox = new CheckboxField("check1", "Check si antonio es un xulo", "checkbox", "", "col s6");
-ExampleModel::$radio1 = new RadioField("Radio1", "radio1", "grupo1", "col s6");
-ExampleModel::$radio2 = new RadioField("Radio2", "radio2", "grupo1", "col s6");
-ExampleModel::$radio3 = new RadioField("Radio3", "radio3", "grupo1", "col s6");
 ExampleModel::$switch = new SwitchField("Switch", "switch", "", "col s6", "on", "off");
 ExampleModel::$choice = new ChoiceField("Sexo", array("Hombre", "Mujer", "Otros"), '', '');
