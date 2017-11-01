@@ -32,18 +32,7 @@ abstract class Field
     }
 
 
-    public abstract function render();/*
-    {
-
-        switch ($this->type)
-        {
-            case "range":
-                break;
-            case "switch":
-        }
-
-        echo "<label for='" . $this->name . "'>" . $this->verbose_name . "</label>";
-    }*/
+    public abstract function render();
 
 
 }
