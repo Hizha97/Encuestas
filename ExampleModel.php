@@ -30,7 +30,7 @@ class ExampleModel
 }
 
 
-ExampleModel::$campoAdicional = new DateField("fecha", "fecha", "Fecha", "10-05-1996");
+ExampleModel::$campoAdicional = new DateField("fecha", "fecha", "Fecha", "10-05-1997");
 ExampleModel::$texto = new CharField("texto1", "Texto", "texto", "adfad");
 ExampleModel::$password = new PasswordField("contraseña", "Contraseña", "password", "adf");
 ExampleModel::$checkbox = new CheckboxField("check1","check", "Check si antonio es un xulo", 1);
