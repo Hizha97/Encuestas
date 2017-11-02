@@ -10,9 +10,9 @@ class PasswordField extends Field
 {
     public function render()
     {
-        echo sprintf("<div class='%s %s'>", 'input-field', $this->styleClasses);
-        echo sprintf("<input type='%s' id='%s'>", "password", $this->id);
+        $this->preInputField();
+        echo sprintf("<input type='%s' id='%s' name='%s' value='%s'>", "password", $this->id, $this->name, $this->value);
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
-        echo '</div>';
+        $this->postInputField();
     }
 }

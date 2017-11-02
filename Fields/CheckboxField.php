@@ -12,7 +12,13 @@ class CheckboxField extends Field
     public function render()
     {
         echo "<p>";
-        echo sprintf("<input type='%s' id='%s'>", "checkbox", $this->id);
+        $format = "<input type='%s' id='%s' %s name='%s'>";
+
+        if($this->value === '')
+            $str = sprintf($format, "checkbox", $this->id, "", $this->name);
+        else
+            $str = sprintf($format, "checkbox", $this->id, "checked='checked'", $this->name);
+        echo $str;
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
         echo '</p>';
     }

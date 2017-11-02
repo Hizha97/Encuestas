@@ -11,12 +11,19 @@ require_once ('Field.php');
 class DateField extends Field
 {
 
-
     public function render()
     {
-        echo sprintf("<div class='%s %s'>", 'input-field', $this->styleClasses);
-        echo sprintf("<input type='%s' class='%s' id='%s'>", "text", "datepicker", $this->id);
+        $this->preInputField();
+        echo sprintf("<input type='%s' class='%s' id='%s' name='%s'>", "text", "datepicker", $this->id, $this->name);
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
-        echo '</div>';
+
+        if($this->value !== '')
+            echo '<script type="text/javascript">',
+            sprintf('var picker = $(\'#%s\').pickadate().pickadate(\'picker\');', $this->id),
+            sprintf("picker.set('select', '%s', {format : 'dd-mm-yyyy' });", $this->value),
+            '</script>';
+
+        $this->postInputField();
     }
 }
+

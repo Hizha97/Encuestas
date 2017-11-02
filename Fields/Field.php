@@ -14,7 +14,7 @@ abstract class Field
     protected $id;
     protected $verbose_name;
     protected $value;
-    protected $styleClasses;
+    protected $name;
 
     /**
      * Field constructor.
@@ -23,16 +23,24 @@ abstract class Field
      * @param $value
      * @param $styleClasses
      */
-    public function __construct($id, $verbose_name, $value = '', $styleClasses = '')
+    public function __construct($id, $name, $verbose_name, $value = '')
     {
         $this->id = $id;
+        $this->name = $name;
         $this->verbose_name = $verbose_name;
         $this->value = $value;
-        $this->styleClasses = $styleClasses;
     }
 
 
     public abstract function render();
 
+    protected function preInputField()
+    {
+        echo sprintf("<div class='%s'>", 'input-field');
+    }
 
+    protected function postInputField()
+    {
+        echo '</div>';
+    }
 }

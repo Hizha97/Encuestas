@@ -8,22 +8,24 @@
 
 class ChoiceField extends Field
 {
-    protected $name;
     protected $choices;
 
-    public function __construct($name, $choices, $value = '', $styleClasses = '')
+    public function __construct($id, $name, $choices, $value = '')
     {
-        parent::__construct($name, $name, $value, $styleClasses);
-        $this->name = $name;
+        parent::__construct($id, $name, $name, $value);
         $this->choices = $choices;
     }
 
     public  function render()
     {
-       foreach($this->choices as $choice)
+        echo sprintf('<div id=%s>', $this->id);
+
+       foreach($this->choices as $index => $choice)
        {
-           $r = new RadioField($choice, $choice, $this->name, $this->value, $this->styleClasses);
+           $r = new RadioButton($choice, $this->name, $choice, $index === $this->value);
            $r->render();
        }
+
+       echo '</div>';
     }
 }
