@@ -6,7 +6,7 @@
  * Time: 21:14
  */
 
-class Row
+class __Row
 {
     use RenderTrait;
     private $fields;
@@ -23,4 +23,9 @@ class Row
             $field->render();
         echo '</div>';
     }
+}
+
+function Row(...$fields)
+{
+    return new __Row($fields);
 }

@@ -15,7 +15,9 @@ require_once ('Fields/SwitchField.php');
 require_once ('Fields/ChoiceField.php');
 require_once ('Fields/MultipleSelectField.php');
 require_once ('Fields/SelectField.php');
-
+require_once ('ArrangementUtilities/Row.php');
+require_once ('ArrangementUtilities/Col.php');
+require_once('ArrangementUtilities/Layout.php');
 class ExampleModel
 {
     public static $texto;
@@ -27,6 +29,16 @@ class ExampleModel
     public static $multipleselect;
     public static $select;
 
+    public function layout()
+    {
+        $v = ExampleModel::class;
+        return Layout(Row(Col($v::$texto, "s3 l12"),
+                          Col($v::$password, "s3 l12")),
+                      $v::$campoAdicional,
+                      Row(Col($v::$checkbox, "s8"), Col($v::$switch, "s4")),
+                      Row($v::$multipleselect),
+                      Row($v::$select));
+    }
 }
 
 

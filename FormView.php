@@ -14,7 +14,7 @@ class FormView
 {
     use RenderTrait;
     public $db;
-    public $model = "ExampleModel";
+    public $model = ExampleModel::class;
     public $fields;
     public $action;
     public $method;
@@ -40,11 +40,7 @@ class FormView
     public function render()
     {
         echo sprintf('<form class="%s">', $this->additionalClasses);
-        $fields = get_class_vars($this->model);
-
-        foreach ($fields as $attribute => $value)
-           $value->render();
-
+        (new $this->model)->layout()->render();
         echo "</form>";
     }
 }
