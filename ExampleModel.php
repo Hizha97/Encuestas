@@ -18,35 +18,41 @@ require_once ('Fields/SelectField.php');
 require_once ('ArrangementUtilities/Row.php');
 require_once ('ArrangementUtilities/Col.php');
 require_once('ArrangementUtilities/Layout.php');
-class ExampleModel
+require_once('Model/Model.php');
+
+class ExampleModel extends Model
 {
-    public static $texto;
-    public static $password;
-    public static $campoAdicional;
-    public static $checkbox;
-    public static $switch;
-    public static $choice;
-    public static $multipleselect;
-    public static $select;
+    public $texto;
+    public $password;
+    public $campoAdicional;
+    public $checkbox;
+    public $switch;
+    public $choice;
+    public $multipleselect;
+    public $select;
+
+    public function __construct($initial)
+    {
+        $this->campoAdicional = new DateField("fecha", "fecha", "Fecha");
+        $this->texto = new CharField("texto1", "Texto", "texto");
+        $this->password = new PasswordField("contraseña", "Contraseña", "password");
+        $this->checkbox = new CheckboxField("check1","check", "Check si antonio es un xulo");
+        $this->switch = new SwitchField("Switch", "switch", "off", "on");
+        $this->choice = new ChoiceField("form1","Sexo", array("Hombre", "Mujer", "Otros"));
+        $this->multipleselect = new MultipleSelectField("Sexo", array("Hombre", "Mujer", "Otros"));
+        $this->select = new SelectField("Sexo", array("Hombre", "Mujer", "Otros"));
+        parent::__construct($initial);
+    }
 
     public function layout()
     {
-        $v = ExampleModel::class;
-        return Layout(Row(Col($v::$texto, "s3 l12"),
-                          Col($v::$password, "s3 l12")),
-                      $v::$campoAdicional,
-                      Row(Col($v::$checkbox, "s8"), Col($v::$switch, "s4")),
-                      Row($v::$multipleselect),
-                      Row($v::$select));
+        return Layout(Row(Col($this->texto, "s3 l12"),
+                          Col($this->password, "s3 l12")),
+                      $this->campoAdicional,
+                      Row(Col($this->checkbox, "s8"), Col($this->switch, "s4")),
+                      Row($this->multipleselect),
+                      Row($this->select));
     }
 }
 
 
-ExampleModel::$campoAdicional = new DateField("fecha", "fecha", "Fecha", "10-05-1997");
-ExampleModel::$texto = new CharField("texto1", "Texto", "texto", "adfad");
-ExampleModel::$password = new PasswordField("contraseña", "Contraseña", "password", "adf");
-ExampleModel::$checkbox = new CheckboxField("check1","check", "Check si antonio es un xulo", 1);
-ExampleModel::$switch = new SwitchField("Switch", "switch", "1", "off", "on");
-ExampleModel::$choice = new ChoiceField("form1","Sexo", array("Hombre", "Mujer", "Otros"), 1);
-ExampleModel::$multipleselect = new MultipleSelectField("Sexo", array("Hombre", "Mujer", "Otros"), array(1,2));
-ExampleModel::$select = new SelectField("Sexo", array("Hombre", "Mujer", "Otros"), 1);

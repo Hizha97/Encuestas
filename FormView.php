@@ -13,34 +13,28 @@ require_once ("ExampleModel.php");
 class FormView
 {
     use RenderTrait;
-    public $db;
-    public $model = ExampleModel::class;
-    public $fields;
+    public $form_class = ExampleModel::class;
+    public $initial;
     public $action;
     public $method;
-    public $additionalClasses;
     /**
      * FormView constructor.
      * @param $fields
-     * @param $labels
-     * @param $db
-     * @param $model
      * @param $action
      * @param $method
      */
-    public function __construct($fields, $action, $method, $additionalClasses="")
+    public function __construct($initial, $action, $method)
     {
-        $this->fields = $fields;
+        $this->initial = $initial;
         $this->action = $action;
         $this->method = $method;
-        $this->db = $GLOBALS['db'];
-        $this->additionalClasses = $additionalClasses;
     }
 
     public function render()
     {
-        echo sprintf('<form class="%s">', $this->additionalClasses);
-        (new $this->model)->layout()->render();
+        $this->db = $GLOBALS['db'];
+        echo sprintf('<form>');
+        (new $this->form_class($this->initial))->layout()->render();
         echo "</form>";
     }
 }

@@ -11,8 +11,9 @@ echo '      <script type="text/javascript" src="https://code.jquery.com/jquery-3
 echo '  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>';
 echo '  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>';
 
+$initial = array('campoAdicional' => "10-05-1996");
 
-$form = new FormView("","","", "col s12");
+$form = new FormView($initial,"","");
 
 echo '<div class="container">';
 $form->render();

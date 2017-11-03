@@ -43,4 +43,9 @@ abstract class Field
     {
         echo '</div>';
     }
+
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
 }
