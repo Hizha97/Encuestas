@@ -22,7 +22,7 @@ class RadioButton
      */
     public function __construct($name, $verbose_name, $selected)
     {
-        $this->id = spl_object_hash($this);
+        $this->id = hash("sha256", spl_object_hash($this));
         $this->name = $name;
         $this->verbose_name = $verbose_name;
         $this->selected = $selected;
