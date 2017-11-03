@@ -33,7 +33,7 @@ class FormView
     public function render()
     {
         $this->db = $GLOBALS['db'];
-        echo sprintf('<form>');
+        echo sprintf('<form id="%s">', spl_object_hash($this));
         (new $this->form_class($this->initial))->layout()->render();
         echo "</form>";
     }

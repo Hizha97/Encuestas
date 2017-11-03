@@ -33,14 +33,14 @@ class ExampleModel extends Model
 
     public function __construct($initial)
     {
-        $this->campoAdicional = new DateField("fecha", "fecha", "Fecha");
-        $this->texto = new CharField("texto1", "Texto", "texto");
-        $this->password = new PasswordField("contraseña", "Contraseña", "password");
-        $this->checkbox = new CheckboxField("check1","check", "Check si antonio es un xulo");
-        $this->switch = new SwitchField("Switch", "switch", "off", "on");
-        $this->choice = new ChoiceField("form1","Sexo", array("Hombre", "Mujer", "Otros"));
-        $this->multipleselect = new MultipleSelectField("Sexo", array("Hombre", "Mujer", "Otros"));
-        $this->select = new SelectField("Sexo", array("Hombre", "Mujer", "Otros"));
+        $this->campoAdicional = new DateField("campoAdicional", "Fecha");
+        $this->texto = new CharField( "texto", "Texto");
+        $this->password = new PasswordField("password", "password");
+        $this->checkbox = new CheckboxField("checkbox", "Check si antonio es un xulo");
+        $this->switch = new SwitchField("switch", "off", "on");
+        $this->choice = new ChoiceField("choice", array("Hombre", "Mujer", "Otros"));
+        $this->multipleselect = new MultipleSelectField("multipleselect", "Elija el sexo", array("Hombre", "Mujer", "Otros"));
+        $this->select = new SelectField("select", array("Hombre", "Mujer", "Otros"));
         parent::__construct($initial);
     }
 

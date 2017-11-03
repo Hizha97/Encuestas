@@ -10,9 +10,9 @@ class ChoiceField extends Field
 {
     protected $choices;
 
-    public function __construct($id, $name, $choices, $value = '')
+    public function __construct($name, $choices, $value = '')
     {
-        parent::__construct($id, $name, $name, $value);
+        parent::__construct($name, $name, $value);
         $this->choices = $choices;
     }
 
@@ -22,7 +22,7 @@ class ChoiceField extends Field
 
        foreach($this->choices as $index => $choice)
        {
-           $r = new RadioButton($choice, $this->name, $choice, $index === $this->value);
+           $r = new RadioButton($this->name, $choice, $index === $this->value);
            $r->render();
        }
 

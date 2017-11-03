@@ -22,7 +22,7 @@ class Model
 
         foreach($classAttributes as $attribute => &$value)
         {
-            if (array_key_exists($attribute, $this->initial))
+            if (array_key_exists($attribute, $this->initial) and !is_null($value))
                 $value->setValue($this->initial[$attribute]);
         }
     }

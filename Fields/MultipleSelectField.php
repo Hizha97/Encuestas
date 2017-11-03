@@ -10,9 +10,9 @@ class MultipleSelectField extends Field
 {
     protected $choices;
 
-    public function __construct($name, $choices, $value = '')
+    public function __construct($name, $verbose_name, $choices, $value = '')
     {
-        parent::__construct(0, $name, $name, $value);
+        parent::__construct($name, $verbose_name, $value);
         $this->choices = $choices;
     }
 

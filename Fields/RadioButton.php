@@ -20,9 +20,9 @@ class RadioButton
      * @param $verbose_name
      * @param $selected
      */
-    public function __construct($id, $name, $verbose_name, $selected)
+    public function __construct($name, $verbose_name, $selected)
     {
-        $this->id = $id;
+        $this->id = spl_object_hash($this);
         $this->name = $name;
         $this->verbose_name = $verbose_name;
         $this->selected = $selected;

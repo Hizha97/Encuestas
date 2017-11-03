@@ -12,7 +12,7 @@ class SelectField extends Field
 
     public function __construct($name, $choices, $value = '')
     {
-        parent::__construct(0, $name, $name, $value);
+        parent::__construct($name, $name, $value);
         $this->choices = $choices;
     }
 

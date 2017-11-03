@@ -11,9 +11,9 @@ class SwitchField extends Field
     protected $label1;
     protected $label2;
 
-    public function __construct($id, $name, $label1, $label2, $value = '')
+    public function __construct($name, $label1, $label2, $value = '')
     {
-        parent::__construct($id, $name, "", $value);
+        parent::__construct($name, "", $value);
         $this->label1 = $label1;
         $this->label2 = $label2;
     }
