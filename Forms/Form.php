@@ -47,7 +47,8 @@ class Form
     public function layout()
     {
         // Default behaviour
-        return Layout(...array_values(get_object_vars($this->model)));
+        return Layout(...$this->model->get_context_data());
+
     }
 
 

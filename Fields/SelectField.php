@@ -20,7 +20,9 @@ class SelectField extends Field
     {
         $this->preInputField();
         echo sprintf('<select name="%s">', $this->name);
+
         echo "<option value=\"\">Select one...</option>";
+
         foreach($this->choices as $index => $choice)
             if($index === $this->value)
                 echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);
