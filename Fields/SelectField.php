@@ -10,9 +10,9 @@ class SelectField extends Field
 {
     protected $choices;
 
-    public function __construct($name, $choices, $value = '', $required = true)
+    public function __construct($name, $verbose_name, $choices, $value = '', $required = true)
     {
-        parent::__construct($name, $name, $value, $required);
+        parent::__construct($name, $verbose_name, $value, $required);
         $this->choices = $choices;
     }
 
@@ -26,10 +26,10 @@ class SelectField extends Field
         echo sprintf('<select name="%s" %s>', $this->name, $requiredParameter);
         echo "<option value=\"\">Select one...</option>";
         foreach($this->choices as $index => $choice)
-            if($index === $this->value)
-                echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);
+            if($choice === $this->value)
+                echo sprintf("<option value='%s' selected> %s</option>", $choice, $choice);
             else
-                echo sprintf("<option value='%s'> %s</option>", $index, $choice);
+                echo sprintf("<option value='%s'> %s</option>", $choice, $choice);
 
         echo '</select>';
         echo sprintf("<label>%s</label>", $this->verbose_name);

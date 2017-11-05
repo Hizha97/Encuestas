@@ -8,3 +8,6 @@
 
 require_once('Model.php');
 require_once('ExampleModel.php');
+require_once('Foo/User.php');
+require_once('Foo/TitulacionAsignaturaProfesor.php');
+require_once('Foo/Pregunta.php');

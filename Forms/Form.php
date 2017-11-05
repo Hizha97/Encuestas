@@ -17,6 +17,7 @@ class Form
     public $initial;
     public $action;
     public $method;
+    private $modelClass;
     /**
      * FormView constructor.
      * @param $fields
@@ -28,6 +29,7 @@ class Form
         $this->initial = $initial;
         $this->action = $action;
         $this->method = $method;
+        $this->modelClass = $modelClass;
         $this->model = new $modelClass($initial);
     }
 
@@ -35,6 +37,7 @@ class Form
     {
         $this->db = $GLOBALS['db'];
         echo sprintf('<form id="%s" method="%s" action="%s">', hash("sha256", spl_object_hash($this)), $this->method, $this->action);
+        echo sprintf("<input type='hidden' value='%s' name='formModelClass__internal'>", $this->modelClass);
         $this->layout()->render();
 
         echo sprintf('<button class="btn waves-effect waves-light" type="submit" name="action" id="%s">Enviar

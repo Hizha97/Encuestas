@@ -29,8 +29,7 @@ class Model
 
     public function get_context_data(){
         $attr = array_values(get_object_vars($this));
-        foreach ($attr as $array_key => $value)
-            echo $array_key;
+
         return $attr;
     }
 

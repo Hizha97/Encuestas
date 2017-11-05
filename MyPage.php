@@ -7,7 +7,7 @@
  */
 
 require_once('Pages/pages.php');
-require_once("FormExampleModel.php");
+require_once("Forms/Form.php");
 
 class MyPage extends AbstractPage
 {
@@ -46,8 +46,8 @@ class MyPage extends AbstractPage
 
     public function body()
     {
-        $initial = array('campoAdicional' => "10/05/1996", 'texto' => "Me llamo Isa");
-        $form = new FormExampleModel($initial,"./prueba.php","post", "ExampleModel");
+        //$initial = array('campoAdicional' => "10/05/1996", 'texto' => "Me llamo Isa");
+        $form = new Form(array(),"./prueba.php","post", "Pregunta");
 
         echo '<div class="container">';
         $form->render();

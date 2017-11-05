@@ -50,4 +50,9 @@ abstract class Field
     {
         $this->value = $value;
     }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
 }
