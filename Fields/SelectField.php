@@ -10,16 +10,20 @@ class SelectField extends Field
 {
     protected $choices;
 
-    public function __construct($name, $choices, $value = '')
+    public function __construct($name, $choices, $value = '', $required = true)
     {
-        parent::__construct($name, $name, $value);
+        parent::__construct($name, $name, $value, $required);
         $this->choices = $choices;
     }
 
     public  function render()
     {
         $this->preInputField();
-        echo sprintf('<select name="%s">', $this->name);
+        $requiredParameter = "";
+        if($this->required)
+            $requiredParameter = "required";
+
+        echo sprintf('<select name="%s" %s>', $this->name, $requiredParameter);
         echo "<option value=\"\">Select one...</option>";
         foreach($this->choices as $index => $choice)
             if($index === $this->value)

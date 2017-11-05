@@ -10,8 +10,13 @@ class PasswordField extends Field
 {
     public function render()
     {
+        $requiredParameter = "";
+
         $this->preInputField();
-        echo sprintf("<input type='%s' id='%s' name='%s' value='%s'>", "password", $this->id, $this->name, $this->value);
+        if($this->required)
+            $requiredParameter = "required";
+
+        echo sprintf("<input type='%s' id='%s' name='%s' value='%s' %s>", "password", $this->id, $this->name, $this->value, $requiredParameter);
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
         $this->postInputField();
     }

@@ -13,8 +13,13 @@ class DateField extends Field
 
     public function render()
     {
+        $requiredParameter = "";
+
         $this->preInputField();
-        echo sprintf("<input type='%s' class='%s' id='%s' name='%s'>", "text", "datepicker", $this->id, $this->name);
+        if($this->required)
+            $requiredParameter = "required";
+
+        echo sprintf("<input type='%s' class='%s' id='%s' name='%s' %s>", "text", "datepicker", $this->id, $this->name, $requiredParameter);
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
 
         if($this->value !== '')

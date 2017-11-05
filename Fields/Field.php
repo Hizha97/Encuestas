@@ -15,6 +15,7 @@ abstract class Field
     protected $verbose_name;
     protected $value;
     protected $name;
+    protected $required;
 
     /**
      * Field constructor.
@@ -23,12 +24,13 @@ abstract class Field
      * @param $value
      * @param $styleClasses
      */
-    public function __construct($name, $verbose_name, $value = '')
+    public function __construct($name, $verbose_name, $value = '', $required = true)
     {
         $this->id = hash("sha256", spl_object_hash($this));
         $this->name = $name;
         $this->verbose_name = $verbose_name;
         $this->value = $value;
+        $this->required = $required;
     }
 
 

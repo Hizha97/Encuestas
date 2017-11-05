@@ -22,7 +22,6 @@ class SwitchField extends Field
     public  function render()
     {
         echo sprintf("<div class='switch'>");
-
         $format = "<label> %s <input type='%s' %s name='%s'> <span class='%s'></span> %s </label>";
 
         if($this->value === '')

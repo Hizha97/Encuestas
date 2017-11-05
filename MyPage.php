@@ -46,7 +46,7 @@ class MyPage extends AbstractPage
 
     public function body()
     {
-        $initial = array('campoAdicional' => "10/05/1996");
+        $initial = array('campoAdicional' => "10/05/1996", 'texto' => "Me llamo Isa");
         $form = new FormExampleModel($initial,"./prueba.php","post", "ExampleModel");
 
         echo '<div class="container">';

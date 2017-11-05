@@ -10,16 +10,19 @@ class MultipleSelectField extends Field
 {
     protected $choices;
 
-    public function __construct($name, $verbose_name, $choices, $value = array(''))
+    public function __construct($name, $verbose_name, $choices, $value = array(''), $required = true)
     {
-        parent::__construct($name, $verbose_name, $value);
+        parent::__construct($name, $verbose_name, $value, $required);
         $this->choices = $choices;
     }
 
     public  function render()
     {
         $this->preInputField();
-        echo sprintf('<select name="%s" multiple>', $this->name);
+        $requiredParameter = "";
+        if($this->required)
+            $requiredParameter = "required";
+        echo sprintf('<select name="%s[]" multiple %s>', $this->name,$requiredParameter);
 
         foreach($this->choices as $index => $choice)
             if(in_array($index, $this->value))

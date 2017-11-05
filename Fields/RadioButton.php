@@ -32,9 +32,9 @@ class RadioButton
     {
         echo "<p>";
         if($this->selected == false)
-            echo sprintf("<input type='%s' id='%s' name='%s' />", "radio", $this->id, $this->name);
+            echo sprintf("<input type='%s' id='%s' name='%s' required  />", "radio", $this->id, $this->name);
         else
-            echo sprintf("<input type='%s' id='%s' name='%s' checked='checked'/>", "radio", $this->id, $this->name);
+            echo sprintf("<input type='%s' id='%s' name='%s' checked='checked' required/>", "radio", $this->id, $this->name);
 
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
         echo '</p>';
