@@ -13,10 +13,10 @@ class FormExampleModel extends Form
     public function layout()
     {
         $v = $this->model;
-        return Layout(Row(Col($v->texto, "s3 l12"),
-            Col($v->password, "s3 l12")),
+        return Layout(Row(Col($v->texto, "s12 l6"),
+            Col($v->password, "s12 l6")),
             $v->campoAdicional,
-            Row(Col($v->checkbox, "s8"), Col($v->switch, "s4")),
+            Row(Col($v->checkbox, "s8"), Col($v->switch, "s12")),
             Row($v->multipleselect),
             Row($v->select));
     }

@@ -6,6 +6,8 @@
  * Time: 3:38
  */
 
+require_once ('RenderTrait.php');
+
 class __Layout
 {
     use RenderTrait;
@@ -22,8 +24,10 @@ class __Layout
 
     public function render()
     {
-        foreach($this->renderables as $renderable)
-            $renderable->render();
+        foreach($this->renderables as $renderable) {
+            if (method_exists($renderable, "render"))
+                $renderable->render();
+        }
     }
 
 

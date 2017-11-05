@@ -7,6 +7,7 @@
  */
 
 require_once("Fields/fields.php");
+
 class ExampleModel extends Model
 {
     public $texto;
