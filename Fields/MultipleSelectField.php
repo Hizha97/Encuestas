@@ -10,7 +10,7 @@ class MultipleSelectField extends Field
 {
     protected $choices;
 
-    public function __construct($name, $verbose_name, $choices, $value = '')
+    public function __construct($name, $verbose_name, $choices, $value = array(''))
     {
         parent::__construct($name, $verbose_name, $value);
         $this->choices = $choices;
@@ -19,7 +19,7 @@ class MultipleSelectField extends Field
     public  function render()
     {
         $this->preInputField();
-        echo sprintf('<select multiple name="%s">', $this->name);
+        echo sprintf('<select name="%s" multiple>', $this->name);
 
         foreach($this->choices as $index => $choice)
             if(in_array($index, $this->value))

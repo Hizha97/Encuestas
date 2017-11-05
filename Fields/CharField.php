@@ -14,7 +14,7 @@ class CharField extends Field
     {
         $this->preInputField();
         echo sprintf("<input type='%s' id='%s' name='%s' value='%s'>", "text", $this->id, $this->name, $this->value);
-        echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
+        echo sprintf("<label for='%s' > %s </label>", $this->id, $this->verbose_name, strtolower($this->verbose_name));
         $this->postInputField();
     }
 }

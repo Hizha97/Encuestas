@@ -19,8 +19,8 @@ class DateField extends Field
 
         if($this->value !== '')
             echo '<script type="text/javascript">',
-            sprintf('var picker = $(\'#%s\').pickadate().pickadate(\'picker\');', $this->id),
-            sprintf("picker.set('select', '%s', {format : 'dd-mm-yyyy' });", $this->value),
+            sprintf('$(\'document\').ready(function(){var picker = $(\'#%s\').pickadate().pickadate(\'picker\');', $this->id),
+            sprintf("picker.set('select', '%s');});", $this->value),
             '</script>';
 
         $this->postInputField();
