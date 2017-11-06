@@ -3,7 +3,10 @@
  * Created by PhpStorm.
  * Usuario: antonio
  * Date: 05/11/2017
- * Time: 13:13
+ * Time: 19:52
  */
 
-require_once ('AbstractPage.php');
+class View
+{
+
+}

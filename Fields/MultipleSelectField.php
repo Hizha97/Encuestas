@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: antonio
+ * Usuario: antonio
  * Date: 01/11/2017
  * Time: 23:40
  */
@@ -24,6 +24,7 @@ class MultipleSelectField extends Field
             $requiredParameter = "required";
         echo sprintf('<select name="%s[]" multiple %s>', $this->name,$requiredParameter);
 
+        echo "<option value=\"\">Selecciona uno...</option>";
         foreach($this->choices as $index => $choice)
             if(in_array($index, $this->value))
                 echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);

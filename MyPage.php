@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: antonio
+ * Usuario: antonio
  * Date: 05/11/2017
  * Time: 13:12
  */
@@ -13,6 +13,7 @@ class MyPage extends AbstractPage
 {
     public function head()
     {
+        echo '<meta charset="utf-8">';
         echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
         echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">';
         echo '<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>';

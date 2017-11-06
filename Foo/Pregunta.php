@@ -1,12 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: isa
+ * Usuario: isa
  * Date: 5/11/17
  * Time: 21:18
  */
 require_once ("Models/Model.php");
-
+require_once ("Fields/fields.php");
 class Pregunta extends Model
 {
     public $pregunta;
@@ -22,6 +22,7 @@ class Pregunta extends Model
                                         'ChoiceField', 'DateField',
                                         'MultipleSelectField', 'SelectField', 'SwitchField'));
         $this->abrev = new CharField('abrev', 'Abreviatura de la pregunta');
+        $this->for = new ForeignKey('for', 'for', 'Usuario');
         parent::__construct($initial);
     }
 

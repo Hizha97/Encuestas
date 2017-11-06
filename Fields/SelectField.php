@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: antonio
+ * Usuario: antonio
  * Date: 01/11/2017
  * Time: 23:40
  */
@@ -24,12 +24,12 @@ class SelectField extends Field
             $requiredParameter = "required";
 
         echo sprintf('<select name="%s" %s>', $this->name, $requiredParameter);
-        echo "<option value=\"\">Select one...</option>";
+        echo "<option value=\"\">Selecciona uno...</option>";
         foreach($this->choices as $index => $choice)
             if($choice === $this->value)
-                echo sprintf("<option value='%s' selected> %s</option>", $choice, $choice);
+                echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);
             else
-                echo sprintf("<option value='%s'> %s</option>", $choice, $choice);
+                echo sprintf("<option value='%s'> %s</option>", $index, $choice);
 
         echo '</select>';
         echo sprintf("<label>%s</label>", $this->verbose_name);

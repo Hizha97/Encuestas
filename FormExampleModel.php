@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: antonio
+ * Usuario: antonio
  * Date: 03/11/2017
  * Time: 20:50
  */
@@ -16,8 +16,7 @@ class FormExampleModel extends Form
         return Layout(Row(Col($v->texto, "s12 l6"),
             Col($v->password, "s12 l6")),
             $v->campoAdicional,
-            Row(Col($v->checkbox, "s8"), Col($v->switch, "s12")),
-            Row($v->multipleselect),
-            Row($v->select));
+            Row(Col($v->checkbox, "s12 l6"), Col($v->switch, "s12 l6")),
+            Row(Col($v->multipleselect, "s12 l6"), Col($v->select, "s12 l6")));
     }
 }

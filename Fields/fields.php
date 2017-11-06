@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: antonio
+ * Usuario: antonio
  * Date: 03/11/2017
  * Time: 20:58
  */
@@ -14,3 +14,4 @@ require_once('Fields/SwitchField.php');
 require_once('Fields/ChoiceField.php');
 require_once('Fields/MultipleSelectField.php');
 require_once('Fields/SelectField.php');
+require_once('Fields/ForeignKey.php');
