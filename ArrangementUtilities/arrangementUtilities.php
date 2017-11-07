@@ -8,3 +8,4 @@
 require_once('ArrangementUtilities/Row.php');
 require_once('ArrangementUtilities/Col.php');
 require_once('ArrangementUtilities/Layout.php');
+require_once('ArrangementUtilities/StringToRenderable.php');

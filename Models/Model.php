@@ -13,6 +13,7 @@ class Model
 
     public function __construct($initial)
     {
+        $this->id = 't'. hash("sha256", spl_object_hash($this));
         $this->initial = $initial;
         $this->set_initial_data();
     }
