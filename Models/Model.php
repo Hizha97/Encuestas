@@ -13,7 +13,7 @@ class Model
 
     public function __construct($initial)
     {
-        $this->id = 't'. hash("sha256", spl_object_hash($this));
+        $this->id = uniqid("Model_" , true);
         $this->initial = $initial;
         $this->set_initial_data();
     }
@@ -37,6 +37,7 @@ class Model
 
     static public function getAll()
     {
+
         $query = "SELECT * FROM " . strtolower(get_called_class()) .'s;';
         $db = $GLOBALS['db'];
 
@@ -44,7 +45,6 @@ class Model
         $stmt->execute();
 
         $className = get_called_class();
-
         $ret = array();
         foreach ($stmt->fetchAll() as $result)
         {

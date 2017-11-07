@@ -36,7 +36,7 @@ class Form
     public function render()
     {
         $this->db = $GLOBALS['db'];
-        echo sprintf('<form id="%s" method="%s" action="%s">', hash("sha256", spl_object_hash($this)), $this->method, $this->action);
+        echo sprintf('<form id="%s" method="%s" action="%s">', $this->id = uniqid("Form_" , true), $this->method, $this->action);
         echo sprintf("<input type='hidden' value='%s' name='formModelClass__internal'>", $this->modelClass);
         $this->layout()->render();
 

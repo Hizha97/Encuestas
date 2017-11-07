@@ -7,6 +7,7 @@
  */
 require_once ("Models/Model.php");
 require_once ("Fields/fields.php");
+
 class Pregunta extends Model
 {
     public $pregunta;
