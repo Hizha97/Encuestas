@@ -8,14 +8,14 @@
 
 class SwitchField extends Field
 {
-    protected $label1;
-    protected $label2;
+    protected $choices;
 
-    public function __construct($name, $label1, $label2, $value = '')
+    public function __construct($name, $choices, $value = '')
     {
+        if(is_string($choices))
+            $choices = explode(';', $choices);
         parent::__construct($name, "", $value);
-        $this->label1 = $label1;
-        $this->label2 = $label2;
+        $this->choices = $choices;
     }
 
 
@@ -25,9 +25,9 @@ class SwitchField extends Field
         $format = "<label> %s <input type='%s' %s name='%s'> <span class='%s'></span> %s </label>";
 
         if($this->value === '')
-            $str = sprintf($format , $this->label1, "checkbox", "", $this->name, "lever", $this->label2);
+            $str = sprintf($format , $this->choices[0], "checkbox", "", $this->name, "lever", $this->choices[1]);
         else
-            $str = sprintf($format, $this->label1, "checkbox", "checked='checked'", $this->name, "lever", $this->label2);
+            $str = sprintf($format, $this->choices[0], "checkbox", "checked='checked'", $this->name, "lever", $this->choices[1]);
 
         echo $str;
         echo "</div>";

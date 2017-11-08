@@ -12,8 +12,8 @@ class SelectField extends Field
 
     public function __construct($name, $verbose_name, $choices, $value = '', $required = true)
     {
-        if(is_string($value))
-            $value = explode(';', $this->value);
+        if(is_string($choices))
+            $choices = explode(';', $choices);
         parent::__construct($name, $verbose_name, $value, $required);
         $this->choices = $choices;
     }

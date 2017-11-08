@@ -12,6 +12,8 @@ class ChoiceField extends Field
 
     public function __construct($name, $choices, $value = '')
     {
+        if(is_string($choices))
+            $choices = explode(';', $choices);
         parent::__construct($name, $name, $value);
         $this->choices = $choices;
     }
@@ -25,7 +27,6 @@ class ChoiceField extends Field
            $r = new RadioButton($this->name, $choice, $index === $this->value);
            $r->render();
        }
-
 
        echo '</div>';
     }

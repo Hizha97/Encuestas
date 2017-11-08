@@ -36,10 +36,19 @@ class VistaDetallePregunta
                 $renderable = new CheckboxField($this->model->id, $this->model->posiblesResp->getValue());
                 break;
             case "ChoiceField":
-                $renderable = new ChoiceField($this->model->id, explode("," , $this->model->posiblesResp->getValue()));
+                $renderable = new ChoiceField($this->model->id, $this->model->posiblesResp->getValue());
                 break;
             case "MultipleSelectField":
                 $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesResp->getValue());
+                break;
+            case "SelectField":
+                $renderable = new SelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesResp->getValue());
+                break;
+            case "SwitchField":
+                $renderable = new SwitchField($this->model->id, $this->model->posiblesResp->getValue());
+                break;
+            case "DateField":
+                $renderable = new DateField($this->model->id, $this->model->abrev->getValue());
                 break;
         }
         echo '<form>';
