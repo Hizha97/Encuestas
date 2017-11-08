@@ -10,12 +10,12 @@ require_once ("Models/models.php");
 require_once ("Fields/fields.php");
 class Usuario extends Model
 {
-    public $username;
+    public $usuario;
     public $password;
 
     public function __construct($initial)
     {
-        $this->usuario = new CharField('username','Nombre de usuario');
+        $this->usuario = new CharField('usuario','Nombre de usuario');
         $this->password = new PasswordField('password','Contraseña');
         parent::__construct($initial);
     }

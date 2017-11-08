@@ -25,7 +25,8 @@ class Model
         foreach($classAttributes as $attribute => &$value)
         {
             if (array_key_exists($attribute, $this->initial) and !is_null($value))
-                $value->setValue($this->initial[$attribute]);
+                if(method_exists($value, "setValue"))
+                    $value->setValue($this->initial[$attribute]);
         }
     }
 
@@ -69,5 +70,7 @@ class Model
         $retClass->id = $result['id'];
         return $retClass;
     }
+
+
 
 }

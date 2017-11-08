@@ -24,7 +24,7 @@ class ForeignKey extends Field
         foreach ($this->className::getAll() as $obj)
             $choices[$obj->id] = $obj->__toString();
 
-        (new SelectField($this->name, $this->verbose_name, $choices, $this->value, $this->required))->render();
+¡        (new SelectField($this->name, $this->verbose_name, $choices, $this->value, $this->required))->render();
     }
 
 }

@@ -12,6 +12,8 @@ class MultipleSelectField extends Field
 
     public function __construct($name, $verbose_name, $choices, $value = array(''), $required = true)
     {
+        if(is_string($value))
+            $value = explode(';', $this->value);
         parent::__construct($name, $verbose_name, $value, $required);
         $this->choices = $choices;
     }
@@ -24,7 +26,7 @@ class MultipleSelectField extends Field
             $requiredParameter = "required";
         echo sprintf('<select name="%s[]" multiple %s>', $this->name,$requiredParameter);
 
-        echo "<option value=\"\">Selecciona uno...</option>";
+        echo "<option value=\"\">seleccionar...</option>";
         foreach($this->choices as $index => $choice)
             if(in_array($index, $this->value))
                 echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);

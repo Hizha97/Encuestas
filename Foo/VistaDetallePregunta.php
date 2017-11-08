@@ -39,7 +39,7 @@ class VistaDetallePregunta
                 $renderable = new ChoiceField($this->model->id, explode("," , $this->model->posiblesResp->getValue()));
                 break;
             case "MultipleSelectField":
-                $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), explode(",", $this->model->posiblesResp->getValue()));
+                $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesResp->getValue());
                 break;
         }
         echo '<form>';
