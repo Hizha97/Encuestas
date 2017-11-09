@@ -25,7 +25,6 @@ class Pregunta extends Model
                                         'MultipleSelectField' => 'Selección multiple', 'SelectField' => 'Campo de selección',
                                         'SwitchField' => 'Switch'));
         $this->abrev = new CharField('abrev', 'Abreviatura de la pregunta');
-        $this->pro = new OneToMany("pro", "Usuario", "Usuario", array(), false);
         parent::__construct($initial);
     }
 

@@ -35,15 +35,17 @@ echo '  $(\'.chips\').material_chip();';
 
 echo '});</script>';
 
-//$classStr = $_POST['formModelClass__internal'];
-//$initial = $_POST;
+$classStr = $_POST['formModelClass__internal'];
+$initial = $_POST;
 
 //print_r($_POST);
 
-//unset($initial['formModelClass__internal']);
-//unset($initial['action']);
+unset($initial['formModelClass__internal']);
+unset($initial['action']);
 
-$models = Pregunta::get(42);
+$models = new $classStr($initial);
+
+$models->save();
 /*
 foreach($models as $model)
 {
