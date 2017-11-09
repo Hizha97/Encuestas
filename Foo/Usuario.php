@@ -13,7 +13,7 @@ class Usuario extends Model
     public $usuario;
     public $password;
 
-    public function __construct($initial)
+    public function __construct($initial = array())
     {
         $this->usuario = new CharField('usuario','Nombre de usuario');
         $this->password = new PasswordField('password','Contraseña');

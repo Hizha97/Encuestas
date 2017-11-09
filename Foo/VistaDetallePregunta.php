@@ -33,19 +33,19 @@ class VistaDetallePregunta
                 $renderable = new CharField($this->model->id , $this->model->abrev->getValue());
                 break;
             case "CheckboxField":
-                $renderable = new CheckboxField($this->model->id, $this->model->posiblesResp->getValue());
+                $renderable = new CheckboxField($this->model->id, $this->model->posiblesRespuestas->getValue());
                 break;
             case "ChoiceField":
-                $renderable = new ChoiceField($this->model->id, $this->model->posiblesResp->getValue());
+                $renderable = new ChoiceField($this->model->id, $this->model->posiblesRespuestas->getValue());
                 break;
             case "MultipleSelectField":
-                $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesResp->getValue());
+                $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesRespuestas->getValue());
                 break;
             case "SelectField":
-                $renderable = new SelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesResp->getValue());
+                $renderable = new SelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesRespuestas->getValue());
                 break;
             case "SwitchField":
-                $renderable = new SwitchField($this->model->id, $this->model->posiblesResp->getValue());
+                $renderable = new SwitchField($this->model->id, $this->model->posiblesRespuestas->getValue());
                 break;
             case "DateField":
                 $renderable = new DateField($this->model->id, $this->model->abrev->getValue());
@@ -54,6 +54,8 @@ class VistaDetallePregunta
         echo '<form>';
         $render = Col(Layout(new StringToRenderable($this->model->pregunta->getValue()), $renderable), "s12");
         $render->render();
+
+        $this->model->pro->render();
         echo '</form>';
     }
 

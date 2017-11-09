@@ -13,22 +13,23 @@ class Model
     public $id;
     public $initial;
 
-    public function __construct($initial)
+    public function __construct($initial = array())
     {
         $this->id = uniqid("Model_" , true);
         $this->initial = $initial;
-        $this->set_initial_data();
+        $this->set_initial_data($initial);
     }
 
-    public function set_initial_data()
+    public function set_initial_data($initial)
     {
+        $this->initial = $initial;
         $classAttributes = get_object_vars($this);
 
         foreach($classAttributes as $attribute => &$value)
         {
-            if (array_key_exists($attribute, $this->initial) and !is_null($value))
+            if (array_key_exists($attribute, $initial) and !is_null($value))
                 if(method_exists($value, "setValue"))
-                    $value->setValue($this->initial[$attribute]);
+                    $value->setValue($initial[$attribute]);
         }
     }
 
@@ -51,8 +52,20 @@ class Model
         $ret = array();
         foreach ($stmt->fetchAll() as $result)
         {
-            $retClass = new $className($result);
+            $retClass = new $className;
+
+            $className = static::class;
+            $retClass = new $className;
+
+            foreach(get_object_vars($retClass) as $attribute => $value)
+            {
+                if (is_object($value) && get_class($value) == "OneToMany")
+                    $result[$attribute] = get_called_class()::get_related($result['id'], $value->className);
+            }
+
+            $retClass->set_initial_data($result);
             $retClass->id = $result['id'];
+
             array_push($ret, $retClass);
         }
 
@@ -68,9 +81,40 @@ class Model
 
         $result = $stmt->fetch();
         $className = static::class;
-        $retClass = new $className($result);
+        $retClass = new $className;
+
+        foreach(get_object_vars($retClass) as $attribute => $value)
+        {
+            if (is_object($value) && get_class($value) == "OneToMany")
+                $result[$attribute] = get_called_class()::get_related($result['id'], $value->className);
+        }
+        $retClass->set_initial_data($result);
         $retClass->id = $result['id'];
         return $retClass;
+    }
+
+    static public function get_related($pk , $class)
+    {
+        $calledClass = strtolower(get_called_class()) .'s';
+        $destinyClass = strtolower($class) . 's';
+        $table = $calledClass . '_' . $destinyClass;
+
+        $query = "SELECT * FROM " .  $table .' WHERE id' . get_called_class() . '=?;';
+        $db = $GLOBALS['db'];
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($pk));
+
+        $relatedIds = array();
+        $relatedOrd = array();
+        foreach ($stmt->fetchAll() as $result)
+        {
+            array_push($relatedIds, $result['id' . strtolower($class)]);
+            if($result['ordering'] != null)
+                array_push($relatedOrd, $result['ordering']);
+        }
+
+        return array('ids' => $relatedIds, 'ord' => implode(';', $relatedOrd));
+
     }
 
     public function save(){
@@ -102,24 +146,27 @@ class Model
 
         $lastId = $db->lastInsertId();
 
-/*
+
         foreach(get_object_vars($this) as $attribute => $value)
         {
-            if(get_class($value) == 'OneToMany')
-            {
-                $dest = $value->className;
-                $labIdOr = 'id'+get_called_class();
-                $labIdDest = 'id'+$dest;
-                $finalQuery = sprint("INSERT INTO %s(%s, %s) VALUES(?, ?);", get_called_class() . '_' . $dest, $labIdOr, $labIdDest);
-                $stmt = $db->prepare($finalQuery);
-                foreach(explode(';', $value->getValue()) as $ids)
-                    $stmt->execute(array($lastId, $ids));
-            }
+            if(is_object($value))
+                if(get_class($value) == 'OneToMany')
+                {
+                    $dest = strtolower($value->className);
+                    $labIdOr = "id".get_called_class();
+                    $labIdDest = "id". $dest;
+                    $finalQuery = sprintf("INSERT INTO %s(%s, %s, %s) VALUES(?, ?, ?);", strtolower(get_called_class()) . 's_' . $dest.'s', $labIdOr, $labIdDest, 'ordering');
+                    $stmt = $db->prepare($finalQuery);
+                    foreach($value->getValue()['ids'] as $ids) {
+                        if(strlen($value->getValue()['ord']) != 0)
+                            $stmt->execute(array($lastId, $ids, array_search($ids, explode(';', $value->getValue()['ord'])) + 1));
+                        else
+                            $stmt->execute(array($lastId, $ids, NULL));
+
+                    }
+                }
         }
 
-        print_r($stmt->errorInfo());
-        echo "<br>";
-        print_r($db->lastInsertId());*/
         // mirar los onetomany
 
     }

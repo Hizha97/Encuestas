@@ -35,21 +35,23 @@ echo '  $(\'.chips\').material_chip();';
 
 echo '});</script>';
 
-$classStr = $_POST['formModelClass__internal'];
-$initial = $_POST;
+//$classStr = $_POST['formModelClass__internal'];
+//$initial = $_POST;
 
-print_r($_POST);
+//print_r($_POST);
 
-unset($initial['formModelClass__internal']);
-unset($initial['action']);
+//unset($initial['formModelClass__internal']);
+//unset($initial['action']);
 
-$model = new $classStr($initial);
-
-
-$model->save();
-
-
+$models = Pregunta::get(42);
 /*
-$detallevista = new VistaDetallePregunta($model);
+foreach($models as $model)
+{
+    echo '<br><br><br>';
+    print_r($model);
+}*/
+
+
+/*$detallevista = new VistaDetallePregunta($model);
 
 $detallevista->render();*/

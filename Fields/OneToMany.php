@@ -10,8 +10,10 @@ class OneToMany extends Field
 {
     public $className;
 
-    public function __construct($name, $verbose_name, $className, $value = array(), $ordering = array(), $required = true)
+    public function __construct($name, $verbose_name, $className, $value = array(), $required = true)
     {
+        if(count($value) == 0)
+            $value = array('ids' => array(), 'ord' => '');
         $this->className = $className;
         parent::__construct($name, $verbose_name, $value, $required);
     }
@@ -22,13 +24,24 @@ class OneToMany extends Field
         foreach ($this->className::getAll() as $obj)
             $choices[$obj->id] = $obj->__toString();
 
-        (new MultipleSelectField($this->name . '[ids][]', $this->verbose_name, $choices, $this->value, $this->required))->render();
 
-        /*$render = Col(Layout(new StringToRenderable($this->model->pregunta->getValue()), $renderable), "s12");
+        $this->preInputField();
+        $requiredParameter = "";
+        if($this->required)
+            $requiredParameter = "required";
+        echo sprintf('<select name="%s[ids][]" multiple %s>', $this->name,$requiredParameter);
 
+        echo "<option value=\"\">seleccionar...</option>";
+        foreach($choices as $index => $choice)
+            if(in_array($index, $this->value['ids']))
+                echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);
+            else
+                echo sprintf("<option value='%s'> %s</option>", $index, $choice);
 
-        $orderingStr = "Si quieres definir un orden, introduce aquí los IDs separados por ; , en el orden en el que quieres que aparezcan los objetos";
+        echo '</select>';
+        echo sprintf("<label>%s</label>", $this->verbose_name);
+        $this->postInputField();
 
-        $ordering = (new CharField($name . '[ord][]', "Ordenacion(separe los campos por ;)", ))*/
+        (new CharField($this->name . '[ord]', "Ordenacion(separe los campos por ;)", $this->value['ord'], false))->render();
     }
 }
