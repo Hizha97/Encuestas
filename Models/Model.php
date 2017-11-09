@@ -5,7 +5,9 @@
  * Date: 02/11/2017
  * Time: 3:14
  */
-
+require_once ("Fields/fields.php");
+require_once ("Models/models.php");
+require_once ("DatabaseConnection.php");
 class Model
 {
     public $id;
@@ -24,6 +26,7 @@ class Model
 
         foreach($classAttributes as $attribute => &$value)
         {
+            var_dump($this->initial);
             if (array_key_exists($attribute, $this->initial) and !is_null($value))
                 if(method_exists($value, "setValue"))
                     $value->setValue($this->initial[$attribute]);
@@ -69,6 +72,57 @@ class Model
         $retClass = new $className($result);
         $retClass->id = $result['id'];
         return $retClass;
+    }
+
+    public function save(){
+        $query = "INSERT INTO " . strtolower(get_called_class()) .'s' . " (id,";
+        $values = " VALUES (NULL, ";
+
+        $params = array();
+        foreach(get_object_vars($this) as $attribute => $value)
+            if(is_subclass_of($value, "Field") and get_class($value) != 'OneToMany')
+            {
+                $query = $query . $attribute . ', ';
+                $values = $values . ' ?,';
+                $val = $value->getValue();
+
+                if(is_array($val))
+                    $val = implode(';', $val);
+
+                array_push($params, $val);
+            }
+        $query = substr($query, 0, -2) . ")";
+        $values = substr($values, 0, -1) . ");";
+
+        $finalQuery = $query . $values;
+        // hacer el insert
+        $db = $GLOBALS['db'];
+
+        $stmt = $db->prepare($finalQuery);
+        $stmt->execute($params);
+
+        $lastId = $db->lastInsertId();
+
+/*
+        foreach(get_object_vars($this) as $attribute => $value)
+        {
+            if(get_class($value) == 'OneToMany')
+            {
+                $dest = $value->className;
+                $labIdOr = 'id'+get_called_class();
+                $labIdDest = 'id'+$dest;
+                $finalQuery = sprint("INSERT INTO %s(%s, %s) VALUES(?, ?);", get_called_class() . '_' . $dest, $labIdOr, $labIdDest);
+                $stmt = $db->prepare($finalQuery);
+                foreach(explode(';', $value->getValue()) as $ids)
+                    $stmt->execute(array($lastId, $ids));
+            }
+        }
+
+        print_r($stmt->errorInfo());
+        echo "<br>";
+        print_r($db->lastInsertId());*/
+        // mirar los onetomany
+
     }
 
 

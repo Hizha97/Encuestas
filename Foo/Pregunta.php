@@ -11,14 +11,14 @@ require_once ("Fields/fields.php");
 class Pregunta extends Model
 {
     public $pregunta;
-    public $posiblesResp;
+    public $posiblesRespuestas;
     public $tipo;
     public $abrev;
 
     public function __construct($initial)
     {
         $this->pregunta = new CharField('pregunta', 'Pregunta');
-        $this->posiblesResp = new CharField('posiblesResp', 'Posibles Respuestas(dejar vacío si no procede)', '', false);
+        $this->posiblesRespuestas = new CharField('posiblesRespuestas', 'Posibles Respuestas(dejar vacío si no procede)', '', false);
         $this->tipo = new SelectField('tipo', 'Tipo de pregunta', array('CharField' => 'Campo Texto',
                                                                                           'CheckboxField' => 'Casilla de marcado' ,
                                         'ChoiceField' => "Radios de selección", 'DateField' => 'Fecha',

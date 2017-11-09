@@ -37,4 +37,9 @@ class MultipleSelectField extends Field
         echo sprintf("<label>%s</label>", $this->verbose_name);
         $this->postInputField();
     }
+
+    public function getChoices(){
+        return $this->choices;
+    }
+
 }

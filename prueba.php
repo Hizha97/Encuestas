@@ -42,7 +42,8 @@ unset($initial['formModelClass__internal']);
 unset($initial['action']);
 
 $model = new $classStr($initial);
-
+$model->save();
+/*
 $detallevista = new VistaDetallePregunta($model);
 
-$detallevista->render();
+$detallevista->render();*/

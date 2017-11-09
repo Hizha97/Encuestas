@@ -20,6 +20,7 @@ class ChoiceField extends Field
 
     public  function render()
     {
+
         echo sprintf('<div id=%s>', $this->id);
 
        foreach($this->choices as $index => $choice)
@@ -29,5 +30,9 @@ class ChoiceField extends Field
        }
 
        echo '</div>';
+    }
+
+    public function getChoices(){
+        return $this->choices;
     }
 }
