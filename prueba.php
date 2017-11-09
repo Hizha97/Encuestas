@@ -38,11 +38,17 @@ echo '});</script>';
 $classStr = $_POST['formModelClass__internal'];
 $initial = $_POST;
 
+print_r($_POST);
+
 unset($initial['formModelClass__internal']);
 unset($initial['action']);
 
 $model = new $classStr($initial);
+
+
 $model->save();
+
+
 /*
 $detallevista = new VistaDetallePregunta($model);
 

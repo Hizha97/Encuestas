@@ -26,7 +26,6 @@ class Model
 
         foreach($classAttributes as $attribute => &$value)
         {
-            var_dump($this->initial);
             if (array_key_exists($attribute, $this->initial) and !is_null($value))
                 if(method_exists($value, "setValue"))
                     $value->setValue($this->initial[$attribute]);
