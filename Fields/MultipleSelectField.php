@@ -29,7 +29,7 @@ class MultipleSelectField extends Field
         echo "<option value=\"\">seleccionar...</option>";
         foreach($this->choices as $index => $choice)
             if(in_array($index, $this->value))
-                echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);
+                echo sprintf("<option value='%s' selected aria-selected='true' autocomplete='off'> %s</option>", $index, $choice);
             else
                 echo sprintf("<option value='%s'> %s</option>", $index, $choice);
 

@@ -40,9 +40,11 @@ class Form
         echo sprintf("<input type='hidden' value='%s' name='formModelClass__internal'>", $this->modelClass);
         $this->layout()->render();
 
+        echo  '<a class="btn waves-effect waves-light" style="margin-right:20px;" onclick="history.back()">Volver</a>';
         echo sprintf('<button class="btn waves-effect waves-light" type="submit" name="action" id="%s">Enviar
         <i class="material-icons right">send</i>
         </button>',  hash("sha256", spl_object_hash($this)) . "Action");
+
 
         echo "</form>";
     }

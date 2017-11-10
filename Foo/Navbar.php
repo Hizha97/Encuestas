@@ -32,6 +32,7 @@ class Navbar
             echo sprintf("<a href = %s> %s </a>", $index, $value);
             echo "</li>";
         }
+        echo '</div>';
 
         echo "</nav>";
 
