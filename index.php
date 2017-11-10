@@ -10,7 +10,7 @@ require_once ('Pages/pages.php');
 
 //$pagina = new MyPage;
 
-$pagina = new UpdatePage("Form", "Pregunta", 19);
+$pagina = new CreatePage("Form", "Pregunta");
 $pagina->render();
 //$pagina->render();
 

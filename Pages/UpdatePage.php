@@ -6,8 +6,8 @@
  * Time: 20:59
  */
 
-require_once ("pages.php");
-require_once ("Forms/forms.php");
+require_once (__DIR__."/pages.php");
+require_once (__DIR__."/../Forms/forms.php");
 
 class UpdatePage extends MenuPage
 {

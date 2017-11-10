@@ -6,7 +6,7 @@
  * Time: 11:27
  */
 
-require_once ('RenderTrait.php');
+require_once (__DIR__.'/../RenderTrait.php');
 class Navbar
 {
     use RenderTrait;
@@ -34,7 +34,6 @@ class Navbar
         }
         echo '</div>';
 
-        echo"</div>";
         echo "</nav>";
 
     }

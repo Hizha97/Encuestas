@@ -5,8 +5,8 @@
  * Date: 10/11/17
  * Time: 20:59
  */
-require_once ('Pages/pages.php');
-require_once ('Forms/forms.php');
+require_once (__DIR__.'/../Pages/pages.php');
+require_once (__DIR__.'/../Forms/forms.php');
 class CreatePage extends MenuPage
 {
     public $formClass;
@@ -30,7 +30,7 @@ class CreatePage extends MenuPage
 
         echo "<div class = 'container'>";
         echo sprintf("<h2 class='teal-text lighten-2'> Crear %s </h2>", $this->modelClass);
-        $form = new $this->formClass(array(), 'create.php', 'POST', $this->modelClass);
+        $form = new $this->formClass(array(), 'Pages/create.php', 'POST', $this->modelClass);
         $form->render();
         echo"</div>";
 

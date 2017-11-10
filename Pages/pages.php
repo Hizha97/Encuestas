@@ -9,3 +9,4 @@
 require_once ('Pages/AbstractPage.php');
 require_once ('Pages/MenuPage.php');
 require_once ('Pages/UpdatePage.php');
+require_once ('Pages/CreatePage.php');

@@ -5,8 +5,8 @@
  * Date: 10/11/17
  * Time: 20:17
  */
-require_once ("Models/models.php");
-require_once ("Fields/fields.php");
+require_once (__DIR__."/../Models/models.php");
+require_once (__DIR__."/../Fields/fields.php");
 class Seccion extends Model
 {
     public $titulo;

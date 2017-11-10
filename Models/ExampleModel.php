@@ -6,7 +6,7 @@
  * Time: 22:00
  */
 
-require_once("Fields/fields.php");
+require_once(__DIR__."/../Fields/fields.php");
 
 class ExampleModel extends Model
 {

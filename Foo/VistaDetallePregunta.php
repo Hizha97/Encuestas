@@ -7,8 +7,8 @@
  */
 
 
-require_once ('RenderTrait.php');
-require_once ('ArrangementUtilities/arrangementUtilities.php');
+require_once (__DIR__.'/../RenderTrait.php');
+require_once (__DIR__.'/../ArrangementUtilities/arrangementUtilities.php');
 
 class VistaDetallePregunta
 {

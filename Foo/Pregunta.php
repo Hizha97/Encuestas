@@ -5,8 +5,8 @@
  * Date: 5/11/17
  * Time: 21:18
  */
-require_once ("Models/Model.php");
-require_once ("Fields/fields.php");
+require_once (__DIR__."/../Models/Model.php");
+require_once (__DIR__."/../Fields/fields.php");
 
 class Pregunta extends Model
 {

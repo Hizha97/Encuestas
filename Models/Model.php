@@ -5,9 +5,9 @@
  * Date: 02/11/2017
  * Time: 3:14
  */
-require_once ("Fields/fields.php");
-require_once ("Models/models.php");
-require_once ("DatabaseConnection.php");
+require_once (__DIR__."/../Fields/fields.php");
+require_once ("models.php");
+require_once (__DIR__."/../DatabaseConnection.php");
 
 class Model
 {

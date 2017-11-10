@@ -6,8 +6,8 @@
  * Time: 20:51
  */
 
-require_once ("Models/models.php");
-require_once ("Fields/fields.php");
+require_once (__DIR__."/../Models/models.php");
+require_once (__DIR__."/../Fields/fields.php");
 
 class Usuario extends Model
 {

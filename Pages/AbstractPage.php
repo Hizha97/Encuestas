@@ -6,7 +6,7 @@
  * Time: 13:10
  */
 
-require_once("RenderTrait.php");
+require_once(__DIR__."/../RenderTrait.php");
 
 abstract class AbstractPage
 {
