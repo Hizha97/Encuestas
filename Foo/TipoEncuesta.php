@@ -6,6 +6,9 @@
  * Time: 20:17
  */
 
+require_once ("Models/models.php");
+require_once ("Fields/fields.php");
+
 class TipoEncuesta extends Model
 {
     public $titulo;
