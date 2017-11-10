@@ -5,14 +5,14 @@
  * Date: 03/11/2017
  * Time: 20:58
  */
-require_once('DateField.php');
-require_once('CharField.php');
-require_once('PasswordField.php');
-require_once('CheckboxField.php');
-require_once('RadioButton.php');
-require_once('SwitchField.php');
-require_once('ChoiceField.php');
-require_once('MultipleSelectField.php');
-require_once('SelectField.php');
-require_once('ForeignKey.php');
-require_once('OneToMany.php');
+require_once(__DIR__.'/DateField.php');
+require_once(__DIR__.'/CharField.php');
+require_once(__DIR__.'/PasswordField.php');
+require_once(__DIR__.'/CheckboxField.php');
+require_once(__DIR__.'/RadioButton.php');
+require_once(__DIR__.'/SwitchField.php');
+require_once(__DIR__.'/ChoiceField.php');
+require_once(__DIR__.'/MultipleSelectField.php');
+require_once(__DIR__.'/SelectField.php');
+require_once(__DIR__.'/ForeignKey.php');
+require_once(__DIR__.'/OneToMany.php');
