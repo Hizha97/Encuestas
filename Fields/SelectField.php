@@ -12,8 +12,6 @@ class SelectField extends Field
 
     public function __construct($name, $verbose_name, $choices, $value = '', $required = true)
     {
-        if(is_string($choices))
-            $choices = explode(';', $choices);
         parent::__construct($name, $verbose_name, $value, $required);
         $this->choices = $choices;
     }
@@ -26,10 +24,10 @@ class SelectField extends Field
             $requiredParameter = "required";
 
         echo sprintf('<select name="%s" %s>', $this->name, $requiredParameter);
-        echo "<option value=\"\">seleccionar...</option>";
+        echo "<option value=\"\">Seleccionar...</option>";
         foreach($this->choices as $index => $choice)
-            if($choice === $this->value)
-                echo sprintf("<option value='%s' selected> %s</option>", $index, $choice);
+            if(strcmp($index, $this->value) == 0)
+                echo sprintf("<option value='%s' selected aria-selected='true' autocomplete='off'> %s</option>", $index, $choice);
             else
                 echo sprintf("<option value='%s'> %s</option>", $index, $choice);
 
