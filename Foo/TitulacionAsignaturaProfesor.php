@@ -5,7 +5,8 @@
  * Date: 5/11/17
  * Time: 21:06
  */
-require_once ("Models/Model.php");
+require_once ("Models/models.php");
+require_once ("Fields/fields.php");
 
 class TitulacionAsignaturaProfesor extends Model
 {

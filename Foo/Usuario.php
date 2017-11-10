@@ -8,6 +8,7 @@
 
 require_once ("Models/models.php");
 require_once ("Fields/fields.php");
+
 class Usuario extends Model
 {
     public $usuario;
