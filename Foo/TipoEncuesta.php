@@ -11,7 +11,6 @@ class TipoEncuesta extends Model
     public $titulo;
     public $fecha_inicio;
     public $fecha_fin;
-    public $url;
     public $secciones;
 
     public function __construct($initial = array())
@@ -19,7 +18,6 @@ class TipoEncuesta extends Model
         $this->titulo = new CharField('titulo', 'Pregunta');
         $this->fecha_inicio = new DateField("fecha_inicio", "Fecha de inicio de la encuesta");
         $this->fecha_fin = new DateField("fecha_fin", "Fecha de fin de la encuesta");
-        $this->url = new CharField('url', 'URL de la encuesta');
         $this->secciones = new OneToMany("secciones", "Secciones relacionadas", "Seccion");
         parent::__construct($initial);
     }
