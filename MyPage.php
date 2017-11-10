@@ -8,6 +8,7 @@
 
 require_once('Pages/pages.php');
 require_once("Forms/Form.php");
+require_once("Foo/Navbar.php");
 
 class MyPage extends AbstractPage
 {
@@ -48,8 +49,11 @@ class MyPage extends AbstractPage
     public function body()
     {
         //$initial = array('campoAdicional' => "10/05/1996", 'texto' => "Me llamo Isa");
+        $navbar = new Navbar("Encuestas", array("#" => "Prueba1", "www.google.es" => "Google", "www.isa.es" => "Isa"));
         $form = new Form(array(),"./prueba.php","post", "Pregunta");
 
+
+        $navbar->render();
         echo '<div class="container">';
         $form->render();
         echo '</div>';
