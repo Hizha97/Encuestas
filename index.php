@@ -7,8 +7,12 @@
  */
 
 require_once ('MyPage.php');
+require_once ('Models/models.php');
+require_once ('Forms/forms.php');
+require_once ('Pages/pages.php');
 
-$pagina = new MyPage;
+$pagina = new CreatePage('Form', 'Pregunta');
+
 
 $pagina->render();
 

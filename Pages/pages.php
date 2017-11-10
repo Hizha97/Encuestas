@@ -7,3 +7,5 @@
  */
 
 require_once ('AbstractPage.php');
+require_once ('MenuPage.php');
+require_once ('CreatePage.php');

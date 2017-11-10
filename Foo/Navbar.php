@@ -33,6 +33,7 @@ class Navbar
             echo "</li>";
         }
 
+        echo"</div>";
         echo "</nav>";
 
     }
