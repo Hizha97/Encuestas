@@ -37,7 +37,7 @@ class MasterPage extends MenuPage
             echo '<table><thead>';
             echo '<tr>';
             foreach (get_object_vars($models[0]) as $attr => $value)
-                if(is_subclass_of($value, "Field") and get_class($value) != 'OneToMany')
+                if(is_subclass_of($value, "Field"))
                 {
                     echo '<th>';
                     echo $value->getVerboseName();
@@ -51,10 +51,13 @@ class MasterPage extends MenuPage
             {
                 echo '<tr>';
                 foreach (get_object_vars($model) as $attr => $value)
-                    if(is_subclass_of($value, "Field") and get_class($value) != 'OneToMany')
+                    if(is_subclass_of($value, "Field"))
                     {
                         echo '<td>';
-                        echo $value->getValue();
+                        if(get_class($value) == "OneToMany")
+                            echo implode(';', $value->getValue()['ids']);
+                        else
+                            echo $value->getValue();
                         echo '</td>';
                     }
                 echo sprintf('<td><form action="%s" method="POST">', "View/ViewUpdatePage.php");

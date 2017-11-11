@@ -21,7 +21,7 @@ class DateField extends Field
 
         echo sprintf("<input type='%s' class='%s' id='%s' name='%s' data-value='%s' %s>", "text", "datepicker", $this->id, $this->name, $this->value, $requiredParameter);
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
-        
+
         $this->postInputField();
     }
 }

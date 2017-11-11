@@ -54,8 +54,6 @@ class VistaDetallePregunta
         echo '<form>';
         $render = Col(Layout(new StringToRenderable($this->model->pregunta->getValue()), $renderable), "s12");
         $render->render();
-
-        $this->model->pro->render();
         echo '</form>';
     }
 
