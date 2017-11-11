@@ -20,4 +20,10 @@ class Seccion extends Model
         $this->preguntas = new OneToMany("preguntas", "Preguntas", "Pregunta");
         parent::__construct($initial);
     }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return sprintf("%s (%s)", $this->titulo->getValue(), $this->id);
+    }
 }

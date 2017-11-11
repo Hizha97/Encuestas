@@ -50,7 +50,7 @@ class MenuPage extends AbstractPage
     public function body()
     {
         // TODO: Implement body() method.
-        $navbar = new Navbar("Encuestas", array("#" => "Prueba1", "www.google.es" => "Google", "www.isa.es" => "Isa"));
+        $navbar = new Navbar("Encuestas", array("TipoEncuestasView.php" => "Tipos de encuesta", "SeccionesView.php " => "Secciones", "PreguntasView.php" => "Preguntas"));
         $navbar->render();
     }
 

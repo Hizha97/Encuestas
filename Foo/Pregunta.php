@@ -28,5 +28,10 @@ class Pregunta extends Model
         parent::__construct($initial);
     }
 
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return sprintf("%s (%s)", $this->abrev->getValue(), $this->id);
+    }
 
 }

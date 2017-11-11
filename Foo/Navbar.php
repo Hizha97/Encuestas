@@ -23,7 +23,7 @@ class Navbar
     {
         echo "<nav>";
         echo sprintf("<div class = '%s'>", "nav-wrapper");
-        echo sprintf("<a href='%s' class = '%s' > %s </a>", '#!', 'brand-logo', $this->title);
+        echo sprintf("<a href='%s' class = '%s' > %s </a>", '#!', 'brand-logo center', $this->title);
         echo sprintf('<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>');
 
         echo sprintf("<ul id='%s' class ='%s'>", 'nav-mobile', 'left hide-on-med-and-down');

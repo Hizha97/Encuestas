@@ -10,7 +10,7 @@ require_once (__DIR__ . '/Pages/pages.php');
 require_once (__DIR__ . '/Models/models.php');
 //$pagina = new MyPage;
 
-$pagina = new MasterPage("Pregunta");
+$pagina = new MenuPage;
 $pagina->render();
 //$pagina->render();
 
