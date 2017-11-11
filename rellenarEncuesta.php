@@ -6,11 +6,13 @@
  * Time: 18:33
  */
 
-require_once(__DIR__ . '/EncuestaForm.php');
+require_once(__DIR__ . '/RellenarEncuestaView.php');
 
 $pkTipoEncuesta = $_GET['p'];
 
-$tipoencuesta = TipoEncuesta::get($pkTipoEncuesta);
 
-$encuesta = new EncuestaForm($tipoencuesta->initial, "#", "POST", "TipoEncuesta", "");
-$encuesta->render();
+$page = new RellenarEncuestaView($pkTipoEncuesta);
+
+echo '<div class = "container">';
+$page->render();
+echo '</div>';
