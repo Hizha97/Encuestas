@@ -5,15 +5,24 @@
  * Date: 10/11/17
  * Time: 23:31
  */
+
+
+
 require_once ("../Models/models.php");
 
-$classStr = $_POST['formModelClass__internal'];
+$modelClass = $_POST['modelClass'];
+$success_url = $_POST['success_url'];
+
 $initial = $_POST;
 
 
-unset($initial['formModelClass__internal']);
+unset($initial['modelClass']);
 unset($initial['action']);
+unset($initial['success_url']);
 
-$model = new $classStr($initial);
+$model = new $modelClass($initial);
 
 $model->save();
+
+header('Location: ' . $_POST['success_url']);
+

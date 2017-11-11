@@ -6,7 +6,8 @@
  * Time: 13:13
  */
 
-require_once ('Pages/AbstractPage.php');
-require_once ('Pages/MenuPage.php');
-require_once ('Pages/UpdatePage.php');
-require_once ('Pages/CreatePage.php');
+require_once (__DIR__.'/AbstractPage.php');
+require_once (__DIR__.'/MenuPage.php');
+require_once (__DIR__.'/UpdatePage.php');
+require_once (__DIR__.'/CreatePage.php');
+require_once (__DIR__.'/MasterPage.php');

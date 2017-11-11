@@ -119,6 +119,13 @@ class Model
 
     }
 
+    static public function delete($pk){
+        $query = "DELETE FROM " . strtolower(get_called_class()) .'s' . ' WHERE id = ?;';
+        $db = $GLOBALS['db'];
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($pk));
+    }
+
     public function save(){
         $query = "INSERT INTO " . strtolower(get_called_class()) .'s' . " (id,";
         $values = " VALUES (NULL, ";

@@ -51,6 +51,11 @@ abstract class Field
         $this->value = $value;
     }
 
+    public function getVerboseName()
+    {
+        return $this->verbose_name;
+    }
+
     public function getValue()
     {
         return $this->value;

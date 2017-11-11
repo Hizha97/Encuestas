@@ -6,6 +6,8 @@
  * Time: 20:54
  */
 
+require_once (__DIR__.'/AbstractPage.php');
+
 class MenuPage extends AbstractPage
 {
 
@@ -55,5 +57,8 @@ class MenuPage extends AbstractPage
     public function afterBodyScripts()
     {
         // TODO: Implement afterBodyScripts() method.
+        echo '$(document).ready(function() {',
+        '$(".button-collapse").sideNav();',
+        '});';
     }
 }

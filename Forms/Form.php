@@ -18,26 +18,30 @@ class Form
     public $action;
     public $method;
     private $modelClass;
+    private $success_url;
     /**
      * FormView constructor.
      * @param $fields
      * @param $action
      * @param $method
      */
-    public function __construct($initial, $action, $method, $modelClass)
+    public function __construct($initial, $action, $method, $modelClass, $success_url)
     {
         $this->initial = $initial;
         $this->action = $action;
         $this->method = $method;
         $this->modelClass = $modelClass;
         $this->model = new $modelClass($initial);
+        $this->success_url = $success_url;
     }
 
     public function render()
     {
         $this->db = $GLOBALS['db'];
         echo sprintf('<form id="%s" method="%s" action="%s">', $this->id = uniqid("Form_" , true), $this->method, $this->action);
-        echo sprintf("<input type='hidden' value='%s' name='formModelClass__internal'>", $this->modelClass);
+        echo sprintf("<input type='hidden' value='%s' name='modelClass'>", $this->modelClass);
+        echo sprintf("<input type='hidden' value='%s' name='success_url'>", $this->success_url);
+
         $this->layout()->render();
 
         echo  '<a class="btn waves-effect waves-light" style="margin-right:20px;" onclick="history.back()">Volver</a>';
