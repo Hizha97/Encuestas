@@ -7,6 +7,7 @@
  */
 
 require_once (__DIR__.'/AbstractPage.php');
+require_once (__DIR__.'/../settings.php');
 
 class MenuPage extends AbstractPage
 {
@@ -50,7 +51,7 @@ class MenuPage extends AbstractPage
     public function body()
     {
         // TODO: Implement body() method.
-        $navbar = new Navbar("Encuestas", array("TipoEncuestasView.php" => "Tipos de encuesta", "SeccionesView.php " => "Secciones", "PreguntasView.php" => "Preguntas"));
+        $navbar = new Navbar("Encuestas", array(BASE_URL . "/TipoEncuestasView.php" => "Tipos de encuesta", BASE_URL . "/SeccionesView.php " => "Secciones", BASE_URL . "/PreguntasView.php" => "Preguntas"));
         $navbar->render();
     }
 

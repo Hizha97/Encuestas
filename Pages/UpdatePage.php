@@ -36,7 +36,6 @@ class UpdatePage extends MenuPage
 
         $realModel = ($this->modelClass)::get($this->pk);
 
-        var_dump($realModel->initial);
         echo "<div class = 'container'>";
         echo "<br>";
         echo sprintf("<h2 class='teal-text lighten-2'>Editar %s</h2>", $this->modelClass);
