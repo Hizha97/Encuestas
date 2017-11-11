@@ -220,11 +220,13 @@ class Model
                     $labIdDest = "id" . $dest;
                     $finalQuery = sprintf("INSERT INTO %s(%s, %s, %s) VALUES(?, ?, ?);", strtolower(get_called_class()) . 's_' . $dest . 's', $labIdOr, $labIdDest, 'ordering');
                     $stmt = $db->prepare($finalQuery);
+                    print_r($value->getValue());
+
                     foreach ($value->getValue()['ids'] as $ids) {
                         if (strlen($value->getValue()['ord']) != 0)
-                            $stmt->execute(array($lastId, $ids, array_search($ids, explode(';', $value->getValue()['ord'])) + 1));
+                            $stmt->execute(array($this->id, $ids, array_search($ids, explode(';', $value->getValue()['ord'])) + 1));
                         else
-                            $stmt->execute(array($lastId, $ids, NULL));
+                            $stmt->execute(array($this->id, $ids, NULL));
                     }
                 }
         }

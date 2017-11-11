@@ -42,6 +42,11 @@ class OneToMany extends Field
         echo sprintf("<label>%s</label>", $this->verbose_name);
         $this->postInputField();
 
-        (new CharField($this->name . '[ord]', "Ordenacion(separe los campos por ;)", $this->value['ord'], false))->render();
+        $ordering = explode(';',$this->value['ord']);
+        $orderids = array();
+        foreach($ordering as $order)
+            if($order != "")
+            array_push($orderids, $this->value['ids'][$order - 1]);
+        (new CharField($this->name . '[ord]', "Ordenacion(separe los campos por ;)", implode(';', $orderids), false))->render();
     }
 }
