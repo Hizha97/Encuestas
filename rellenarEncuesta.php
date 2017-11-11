@@ -8,11 +8,17 @@
 
 require_once(__DIR__ . '/RellenarEncuestaView.php');
 
-$pkTipoEncuesta = $_GET['p'];
+
+if(array_key_exists('p', $_GET)) {
+    $pkTipoEncuesta = $_GET['p'];
 
 
-$page = new RellenarEncuestaView($pkTipoEncuesta);
+    $page = new RellenarEncuestaView($pkTipoEncuesta);
 
-echo '<div class = "container">';
-$page->render();
-echo '</div>';
+    echo '<div class = "container">';
+    $page->render();
+    echo '</div>';
+}
+else {
+    echo sprintf("<h1> La página solicitada no existe </h1>");
+}
