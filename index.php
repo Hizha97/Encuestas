@@ -12,6 +12,8 @@ require_once (__DIR__ . '/Models/models.php');
 
 $pagina = new MenuPage;
 $pagina->render();
+
+
 //$pagina->render();
 
 ?>
