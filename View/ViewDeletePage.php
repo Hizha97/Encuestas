@@ -5,7 +5,7 @@
  * Date: 11/11/2017
  * Time: 2:44
  */
-require_once (__DIR__ . "/Models/models.php");
+require_once(__DIR__ . "/../Models/models.php");
 
 $modelClass = $_POST['modelClass'];
 $pk = $_POST['pk'];

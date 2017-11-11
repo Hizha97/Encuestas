@@ -6,7 +6,7 @@
  * Time: 3:05
  */
 
-require_once (__DIR__.'/Pages/pages.php');
+require_once(__DIR__ . '/../Pages/pages.php');
 
 
 $modelClass = $_POST['modelClass'];

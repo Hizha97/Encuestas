@@ -30,7 +30,7 @@ class CreatePage extends MenuPage
 
         echo "<div class = 'container'>";
         echo sprintf("<h2 class='teal-text lighten-2'> Crear %s </h2>", $this->modelClass);
-        $form = new $this->formClass(array(), 'Pages/create.php', 'POST', $this->modelClass, $this->success_url);
+        $form = new $this->formClass(array(), 'Actions/create.php', 'POST', $this->modelClass, $this->success_url);
         $form->render();
         echo"</div>";
 

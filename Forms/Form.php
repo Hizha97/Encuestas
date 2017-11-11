@@ -41,6 +41,7 @@ class Form
         echo sprintf('<form id="%s" method="%s" action="%s">', $this->id = uniqid("Form_" , true), $this->method, $this->action);
         echo sprintf("<input type='hidden' value='%s' name='modelClass'>", $this->modelClass);
         echo sprintf("<input type='hidden' value='%s' name='success_url'>", $this->success_url);
+        echo sprintf("<input type='hidden' value='%s' name='id'>", $this->model->id);
 
         $this->layout()->render();
 

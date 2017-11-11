@@ -16,7 +16,7 @@ class Model
 
     public function __construct($initial = array())
     {
-        $this->id = uniqid("Model_" , true);
+        $this->id = uniqid("Model_", true);
         $this->initial = $initial;
         $this->set_initial_data($initial);
     }
@@ -26,15 +26,18 @@ class Model
         $this->initial = $initial;
         $classAttributes = get_object_vars($this);
 
-        foreach($classAttributes as $attribute => &$value)
-        {
+        foreach ($classAttributes as $attribute => &$value) {
             if (array_key_exists($attribute, $initial) and !is_null($value))
-                if(method_exists($value, "setValue"))
+                if (method_exists($value, "setValue"))
                     $value->setValue($initial[$attribute]);
         }
+
+        if (array_key_exists('id', $initial))
+            $this->id = $initial['id'];
     }
 
-    public function get_context_data(){
+    public function get_context_data()
+    {
         $attr = array_values(get_object_vars($this));
 
 
@@ -44,7 +47,7 @@ class Model
     static public function getAll()
     {
 
-        $query = "SELECT * FROM " . strtolower(get_called_class()) .'s;';
+        $query = "SELECT * FROM " . strtolower(get_called_class()) . 's;';
         $db = $GLOBALS['db'];
 
         $stmt = $db->prepare($query);
@@ -52,15 +55,13 @@ class Model
 
         $className = get_called_class();
         $ret = array();
-        foreach ($stmt->fetchAll() as $result)
-        {
+        foreach ($stmt->fetchAll() as $result) {
             $retClass = new $className;
 
             $className = static::class;
             $retClass = new $className;
 
-            foreach(get_object_vars($retClass) as $attribute => $value)
-            {
+            foreach (get_object_vars($retClass) as $attribute => $value) {
                 if (is_object($value) && get_class($value) == "OneToMany")
                     $result[$attribute] = get_called_class()::get_related($result['id'], $value->className);
             }
@@ -74,8 +75,9 @@ class Model
         return $ret;
     }
 
-    static public function get($pk){
-        $query = "SELECT * FROM " . strtolower(get_called_class()) .'s' . ' WHERE id = ?;';
+    static public function get($pk)
+    {
+        $query = "SELECT * FROM " . strtolower(get_called_class()) . 's' . ' WHERE id = ?;';
         $db = $GLOBALS['db'];
 
         $stmt = $db->prepare($query);
@@ -85,8 +87,7 @@ class Model
         $className = static::class;
         $retClass = new $className;
 
-        foreach(get_object_vars($retClass) as $attribute => $value)
-        {
+        foreach (get_object_vars($retClass) as $attribute => $value) {
             if (is_object($value) && get_class($value) == "OneToMany")
                 $result[$attribute] = get_called_class()::get_related($result['id'], $value->className);
         }
@@ -95,23 +96,22 @@ class Model
         return $retClass;
     }
 
-    static public function get_related($pk , $class)
+    static public function get_related($pk, $class)
     {
-        $calledClass = strtolower(get_called_class()) .'s';
+        $calledClass = strtolower(get_called_class()) . 's';
         $destinyClass = strtolower($class) . 's';
         $table = $calledClass . '_' . $destinyClass;
 
-        $query = "SELECT * FROM " .  $table .' WHERE id' . get_called_class() . '=?;';
+        $query = "SELECT * FROM " . $table . ' WHERE id' . get_called_class() . '=?;';
         $db = $GLOBALS['db'];
         $stmt = $db->prepare($query);
         $stmt->execute(array($pk));
 
         $relatedIds = array();
         $relatedOrd = array();
-        foreach ($stmt->fetchAll() as $result)
-        {
+        foreach ($stmt->fetchAll() as $result) {
             array_push($relatedIds, $result['id' . strtolower($class)]);
-            if($result['ordering'] != null)
+            if ($result['ordering'] != null)
                 array_push($relatedOrd, $result['ordering']);
         }
 
@@ -119,26 +119,27 @@ class Model
 
     }
 
-    static public function delete($pk){
-        $query = "DELETE FROM " . strtolower(get_called_class()) .'s' . ' WHERE id = ?;';
+    static public function delete($pk)
+    {
+        $query = "DELETE FROM " . strtolower(get_called_class()) . 's' . ' WHERE id = ?;';
         $db = $GLOBALS['db'];
         $stmt = $db->prepare($query);
         $stmt->execute(array($pk));
     }
 
-    public function save(){
-        $query = "INSERT INTO " . strtolower(get_called_class()) .'s' . " (id,";
+    public function save()
+    {
+        $query = "INSERT INTO " . strtolower(get_called_class()) . 's' . " (id,";
         $values = " VALUES (NULL, ";
 
         $params = array();
-        foreach(get_object_vars($this) as $attribute => $value)
-            if(is_subclass_of($value, "Field") and get_class($value) != 'OneToMany')
-            {
+        foreach (get_object_vars($this) as $attribute => $value)
+            if (is_subclass_of($value, "Field") and get_class($value) != 'OneToMany') {
                 $query = $query . $attribute . ', ';
                 $values = $values . ' ?,';
                 $val = $value->getValue();
 
-                if(is_array($val))
+                if (is_array($val))
                     $val = implode(';', $val);
 
                 array_push($params, $val);
@@ -156,18 +157,16 @@ class Model
         $lastId = $db->lastInsertId();
 
 
-        foreach(get_object_vars($this) as $attribute => $value)
-        {
-            if(is_object($value))
-                if(get_class($value) == 'OneToMany')
-                {
+        foreach (get_object_vars($this) as $attribute => $value) {
+            if (is_object($value))
+                if (get_class($value) == 'OneToMany') {
                     $dest = strtolower($value->className);
-                    $labIdOr = "id".get_called_class();
-                    $labIdDest = "id". $dest;
-                    $finalQuery = sprintf("INSERT INTO %s(%s, %s, %s) VALUES(?, ?, ?);", strtolower(get_called_class()) . 's_' . $dest.'s', $labIdOr, $labIdDest, 'ordering');
+                    $labIdOr = "id" . get_called_class();
+                    $labIdDest = "id" . $dest;
+                    $finalQuery = sprintf("INSERT INTO %s(%s, %s, %s) VALUES(?, ?, ?);", strtolower(get_called_class()) . 's_' . $dest . 's', $labIdOr, $labIdDest, 'ordering');
                     $stmt = $db->prepare($finalQuery);
-                    foreach($value->getValue()['ids'] as $ids) {
-                        if(strlen($value->getValue()['ord']) != 0)
+                    foreach ($value->getValue()['ids'] as $ids) {
+                        if (strlen($value->getValue()['ord']) != 0)
                             $stmt->execute(array($lastId, $ids, array_search($ids, explode(';', $value->getValue()['ord'])) + 1));
                         else
                             $stmt->execute(array($lastId, $ids, NULL));
@@ -180,6 +179,54 @@ class Model
 
     }
 
+    public function update()
+    {
+        $query = "UPDATE " . strtolower(get_called_class()) . 's' . " SET ";
+
+        $params = array();
+        foreach (get_object_vars($this) as $attribute => $value)
+            if (is_subclass_of($value, "Field") and get_class($value) != 'OneToMany') {
+                $query = $query . $attribute . '=?, ';
+                $val = $value->getValue();
+                if (is_array($val))
+                    $val = implode(';', $val);
+                array_push($params, $val);
+            }
 
 
+        $db = $GLOBALS['db'];
+        $query = substr($query, 0, -2);
+        $query = $query . ' WHERE id=?';
+
+        array_push($params, $this->id);
+
+        $stmt = $db->prepare($query);
+        $stmt->execute($params);
+        print_r($stmt->errorInfo());
+
+        foreach (get_object_vars($this) as $attribute => $value) {
+            if (is_object($value))
+                if (get_class($value) == 'OneToMany') {
+                    $dest = strtolower($value->className);
+                    $labIdOr = "id" . get_called_class();
+                    $labIdDest = "id" . $dest;
+                    $finalQuery = sprintf("DELETE FROM %s WHERE %s=?;", strtolower(get_called_class()) . 's_' . $dest . 's', $labIdOr);
+                    $stmt = $db->prepare($finalQuery);
+                    $stmt->execute(array($this->id));
+
+
+                    $dest = strtolower($value->className);
+                    $labIdOr = "id" . get_called_class();
+                    $labIdDest = "id" . $dest;
+                    $finalQuery = sprintf("INSERT INTO %s(%s, %s, %s) VALUES(?, ?, ?);", strtolower(get_called_class()) . 's_' . $dest . 's', $labIdOr, $labIdDest, 'ordering');
+                    $stmt = $db->prepare($finalQuery);
+                    foreach ($value->getValue()['ids'] as $ids) {
+                        if (strlen($value->getValue()['ord']) != 0)
+                            $stmt->execute(array($lastId, $ids, array_search($ids, explode(';', $value->getValue()['ord'])) + 1));
+                        else
+                            $stmt->execute(array($lastId, $ids, NULL));
+                    }
+                }
+        }
+    }
 }

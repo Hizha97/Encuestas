@@ -6,6 +6,8 @@
  * Time: 3:11
  */
 
+require_once (__DIR__ . '/../RenderTrait.php');
+
 class __Col
 {
     use RenderTrait;

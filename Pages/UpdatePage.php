@@ -14,18 +14,19 @@ class UpdatePage extends MenuPage
     public $formClass;
     public $modelClass;
     public $pk;
-
+    public $success_url;
     /**
      * UpdatePage constructor.
      * @param $formClass
      * @param $model
      * @param $pk
      */
-    public function __construct($formClass, $modelClass, $pk)
+    public function __construct($formClass, $modelClass, $pk, $success_url)
     {
         $this->formClass = $formClass;
         $this->modelClass = $modelClass;
         $this->pk = $pk;
+        $this->success_url = $success_url;
     }
 
 
@@ -35,10 +36,11 @@ class UpdatePage extends MenuPage
 
         $realModel = ($this->modelClass)::get($this->pk);
 
+        var_dump($realModel->initial);
         echo "<div class = 'container'>";
         echo "<br>";
         echo sprintf("<h2 class='teal-text lighten-2'>Editar %s</h2>", $this->modelClass);
-        $form = new $this->formClass($realModel->initial, "update.php", "POST", $this->modelClass);
+        $form = new $this->formClass($realModel->initial, "Actions/update.php", "POST", $this->modelClass, $this->success_url);
         $form->render();
         echo "</div>";
     }

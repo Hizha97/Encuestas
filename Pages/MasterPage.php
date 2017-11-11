@@ -57,14 +57,15 @@ class MasterPage extends MenuPage
                         echo $value->getValue();
                         echo '</td>';
                     }
-                echo sprintf('<td><form action="%s" method="POST">', "ViewUpdatePage.php");
+                echo sprintf('<td><form action="%s" method="POST">', "View/ViewUpdatePage.php");
                 echo sprintf("<input type='hidden' value='%s' name='modelClass'>", $this->modelClass);
                 echo sprintf("<input type='hidden' value='%s' name='pk'>", $model->id);
                 echo sprintf("<input type='hidden' value='%s' name='success_url'>", $_SERVER['REQUEST_URI']);
+                echo sprintf("<input type='hidden' value='%s' name='form_class'>", 'Form');
                 echo sprintf('<button class="btn waves-effect waves-light" type="submit" name="action">%s</button>', "Editar");
                 echo '</form></td>';
 
-                echo sprintf('<td><form action="%s" method="POST">', "ViewDeletePage.php");
+                echo sprintf('<td><form action="%s" method="POST">', "View/ViewDeletePage.php");
                 echo sprintf("<input type='hidden' value='%s' name='modelClass'>", $this->modelClass);
                 echo sprintf("<input type='hidden' value='%s' name='pk'>", $model->id);
                 echo sprintf("<input type='hidden' value='%s' name='success_url'>", $_SERVER['REQUEST_URI']);
@@ -77,7 +78,7 @@ class MasterPage extends MenuPage
             echo '</table>';
         }
 
-        echo sprintf('<td><form action="%s" method="POST">', "ViewCreatePage.php");
+        echo sprintf('<td><form action="%s" method="POST">', "View/ViewCreatePage.php");
         echo sprintf("<input type='hidden' value='%s' name='modelClass'>", $this->modelClass);
         echo sprintf("<input type='hidden' value='%s' name='success_url'>", $_SERVER['REQUEST_URI']);
         echo sprintf("<input type='hidden' value='%s' name='form_class'>", 'Form');

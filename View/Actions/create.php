@@ -8,7 +8,7 @@
 
 
 
-require_once ("../Models/models.php");
+require_once(__DIR__."/../../Models/models.php");
 
 $modelClass = $_POST['modelClass'];
 $success_url = $_POST['success_url'];

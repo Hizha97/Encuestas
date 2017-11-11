@@ -6,6 +6,8 @@
  * Time: 9:18
  */
 
+require_once (__DIR__ . '/../RenderTrait.php');
+
 class StringToRenderable
 {
     public $toRender;

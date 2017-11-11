@@ -6,7 +6,7 @@
  * Time: 3:38
  */
 
-require_once ('RenderTrait.php');
+require_once (__DIR__ . '/../RenderTrait.php');
 
 class __Layout
 {

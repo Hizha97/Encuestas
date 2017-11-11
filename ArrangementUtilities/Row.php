@@ -6,6 +6,9 @@
  * Time: 21:14
  */
 
+require_once (__DIR__ . '/../RenderTrait.php');
+
+
 class __Row
 {
     use RenderTrait;
