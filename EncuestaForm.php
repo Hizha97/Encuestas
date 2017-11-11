@@ -29,7 +29,7 @@ class EncuestaForm extends Form
             foreach($seccion->preguntas->getValue()['ids'] as $preguntaId)
             {
                 $pregunta = Pregunta::get($preguntaId);
-                array_push($renderables, new VistaDetallePregunta($pregunta));
+                array_push($renderables, Row(new VistaDetallePregunta($pregunta)));
             }
         }
         return Layout(...$renderables);

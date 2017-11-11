@@ -27,7 +27,15 @@ class VistaDetallePregunta
     public function render()
     {
         $renderable = null;
-        switch ($this->model->tipo->getValue())
+
+        $dictValues = array();
+        $tipo = $this->model->tipo->getValue();
+
+        if($tipo === 'MultipleSelectField' or $tipo === 'SelectField')
+            foreach (explode(';',$this->model->posiblesRespuestas->getValue()) as  $posibleRespuesta)
+                $dictValues[$posibleRespuesta] = $posibleRespuesta;
+
+        switch ($tipo)
         {
             case "CharField":
                 $renderable = new CharField($this->model->id , $this->model->abrev->getValue());
@@ -39,10 +47,10 @@ class VistaDetallePregunta
                 $renderable = new ChoiceField($this->model->id, $this->model->posiblesRespuestas->getValue());
                 break;
             case "MultipleSelectField":
-                $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesRespuestas->getValue());
+                $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), $dictValues);
                 break;
             case "SelectField":
-                $renderable = new SelectField($this->model->id, $this->model->abrev->getValue(), $this->model->posiblesRespuestas->getValue());
+                $renderable = new SelectField($this->model->id, $this->model->abrev->getValue(), $dictValues);
                 break;
             case "SwitchField":
                 $renderable = new SwitchField($this->model->id, $this->model->posiblesRespuestas->getValue());
