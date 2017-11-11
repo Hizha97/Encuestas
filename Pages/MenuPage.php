@@ -35,7 +35,10 @@ class MenuPage extends AbstractPage
     closeOnSelect: false, // Close upon selecting a date
     format: \'dd/mm/yyyy\',
     formatSubmit: \'dd/mm/yyyy\',
+
+     
     hiddenName: true
+   
   });';
 
         echo '$(document).ready(function() {',

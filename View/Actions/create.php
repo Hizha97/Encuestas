@@ -15,7 +15,7 @@ $success_url = $_POST['success_url'];
 
 $initial = $_POST;
 
-
+print_r($_POST);
 unset($initial['modelClass']);
 unset($initial['action']);
 unset($initial['success_url']);
@@ -24,5 +24,5 @@ $model = new $modelClass($initial);
 
 $model->save();
 
-header('Location: ' . $_POST['success_url']);
+//header('Location: ' . $_POST['success_url']);
 

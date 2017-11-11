@@ -19,15 +19,9 @@ class DateField extends Field
         if($this->required)
             $requiredParameter = "required";
 
-        echo sprintf("<input type='%s' class='%s' id='%s' name='%s' %s>", "text", "datepicker", $this->id, $this->name, $requiredParameter);
+        echo sprintf("<input type='%s' class='%s' id='%s' name='%s' data-value='%s' %s>", "text", "datepicker", $this->id, $this->name, $this->value, $requiredParameter);
         echo sprintf("<label for='%s'> %s </label>", $this->id, $this->verbose_name);
-
-        if($this->value !== '')
-            echo '<script type="text/javascript">',
-            sprintf('$(\'document\').ready(function(){var picker = $(\'#%s\').pickadate().pickadate(\'picker\');', $this->id),
-            sprintf("picker.set('select', '%s');});", $this->value),
-            '</script>';
-
+        
         $this->postInputField();
     }
 }
