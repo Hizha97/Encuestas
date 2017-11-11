@@ -34,7 +34,7 @@ class MasterPage extends MenuPage
         else
         {
 
-            echo '<table class="responsive-table"><thead>';
+            echo '<table><thead>';
             echo '<tr>';
             foreach (get_object_vars($models[0]) as $attr => $value)
                 if(is_subclass_of($value, "Field") and get_class($value) != 'OneToMany')

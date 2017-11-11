@@ -26,7 +26,7 @@ class Navbar
         echo sprintf("<a href='%s' class = '%s' > %s </a>", '#!', 'brand-logo', $this->title);
         echo sprintf('<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>');
 
-        echo sprintf("<ul id='%s' class ='%s'>", 'nav-mobile', 'right hide-on-med-and-down');
+        echo sprintf("<ul id='%s' class ='%s'>", 'nav-mobile', 'left hide-on-med-and-down');
 
         foreach ($this->links as $index => $value)
         {
