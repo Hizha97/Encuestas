@@ -18,7 +18,7 @@ class TipoEncuesta extends Model
 
     public function __construct($initial = array())
     {
-        $this->titulo = new CharField('titulo', 'Pregunta');
+        $this->titulo = new CharField('titulo', 'Titulo de la encuesta');
         $this->fecha_inicio = new DateField("fecha_inicio", "Fecha de inicio de la encuesta");
         $this->fecha_fin = new DateField("fecha_fin", "Fecha de fin de la encuesta");
         $this->secciones = new OneToMany("secciones", "Secciones relacionadas", "Seccion");
