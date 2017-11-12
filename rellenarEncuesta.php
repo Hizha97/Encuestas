@@ -15,9 +15,7 @@ if(array_key_exists('p', $_GET)) {
 
     $page = new RellenarEncuestaView($pkTipoEncuesta);
 
-    echo '<div class = "container">';
     $page->render();
-    echo '</div>';
 }
 else {
     echo sprintf("<h1> La página solicitada no existe </h1>");

@@ -7,4 +7,4 @@
  */
 
 
-define('BASE_URL', '/untitled1');
+define('BASE_URL', '/Storm/Encuestas');

@@ -20,8 +20,23 @@ class RellenarEncuestaView extends BasePage
 
     public function body()
     {
+
+
         $tipoencuesta = TipoEncuesta::get($this->pk);
+
+        echo '<div class="navbar-fixed">';
+        echo '<nav>';
+        echo '<div class="nav-wrapper">';
+        echo sprintf('<a href="#!" class="brand-logo center">%s</a>', $tipoencuesta->titulo->getValue());
+        echo '<ul></ul>';
+        echo '</div>';
+        echo '</nav>';
+        echo '</div>';
+
         $encuesta = new EncuestaForm($tipoencuesta->initial, "#", "POST", "TipoEncuesta", "");
+        echo '<div class = "container">';
+
         $encuesta->render();
+        echo '</div>';
     }
 }
