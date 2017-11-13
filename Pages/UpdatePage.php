@@ -39,6 +39,9 @@ class UpdatePage extends MenuPage
         echo "<div class = 'container'>";
         echo "<br>";
         echo sprintf("<h2 class='teal-text lighten-2'>Editar %s</h2>", $this->modelClass);
+
+        if(isset($realModel->initial['password']))
+            $realModel->initial['password'] = '';
         $form = new $this->formClass($realModel->initial, "Actions/update.php", "POST", $this->modelClass, $this->success_url);
         $form->render();
         echo "</div>";

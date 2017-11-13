@@ -17,7 +17,11 @@ unset($initial['modelClass']);
 unset($initial['action']);
 unset($initial['success_url']);
 
+if(isset($initial['password']))
+    $initial['password'] = hash("sha256", $initial['password']);
+
 $model = new $modelClass($initial);
+
 
 
 $model->update();

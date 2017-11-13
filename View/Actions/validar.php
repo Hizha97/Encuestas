@@ -10,7 +10,7 @@ require_once(__DIR__."/../../DatabaseConnection.php");
 $db = $GLOBALS['db'];
 
 $usuario = $_POST['usuario'];
-$password = $_POST['password'];
+$password = hash("sha256", $_POST['password']);
 
 $sql = "SELECT count(*) FROM usuarios WHERE usuario= ? AND password = ?";
 
