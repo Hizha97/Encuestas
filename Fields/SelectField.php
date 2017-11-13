@@ -6,6 +6,8 @@
  * Time: 23:40
  */
 
+require_once (__DIR__ . '/Field.php');
+
 class SelectField extends Field
 {
     protected $choices;

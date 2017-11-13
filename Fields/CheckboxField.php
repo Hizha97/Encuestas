@@ -6,6 +6,9 @@
  * Time: 10:29
  */
 
+require_once (__DIR__ . '/Field.php');
+
+
 class CheckboxField extends Field
 {
 

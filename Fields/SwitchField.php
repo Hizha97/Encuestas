@@ -6,6 +6,8 @@
  * Time: 13:38
  */
 
+require_once (__DIR__ . '/Field.php');
+
 class SwitchField extends Field
 {
     protected $choices;

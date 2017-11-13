@@ -6,7 +6,7 @@
  * Time: 9:14
  */
 
-require_once ('Field.php');
+require_once (__DIR__ . '/Field.php');
 
 class DateField extends Field
 {

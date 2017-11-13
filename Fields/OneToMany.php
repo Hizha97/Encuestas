@@ -6,6 +6,8 @@
  * Time: 20:54
  */
 
+require_once (__DIR__ . '/Field.php');
+
 class OneToMany extends Field
 {
     public $className;

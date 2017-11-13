@@ -6,6 +6,8 @@
  * Time: 20:52
  */
 
+require_once (__DIR__ . '/Field.php');
+
 require_once ('fields.php');
 
 class ForeignKey extends Field

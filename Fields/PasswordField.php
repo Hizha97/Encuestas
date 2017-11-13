@@ -6,6 +6,8 @@
  * Time: 9:56
  */
 
+require_once (__DIR__ . '/Field.php');
+
 class PasswordField extends Field
 {
     public function render()

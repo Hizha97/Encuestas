@@ -6,7 +6,7 @@
  * Time: 9:26
  */
 
-require_once ('Field.php');
+require_once (__DIR__ . '/Field.php');
 
 class TextAreaField extends Field
 {
