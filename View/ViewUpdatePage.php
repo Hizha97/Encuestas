@@ -7,11 +7,15 @@
  */
 
 require_once(__DIR__ . '/../Pages/pages.php');
+include __DIR__  . '/../token.php';
 
-
-$modelClass = $_POST['modelClass'];
-$form_class = $_POST['form_class'];
-$pk = $_POST['pk'];
-$success_url = $_POST['success_url'];
-$page = new UpdatePage($form_class, $modelClass, $pk, $success_url);
-$page->render();
+if(isset($_COOKIE['token']) && checkToken()) {
+    $modelClass = $_POST['modelClass'];
+    $form_class = $_POST['form_class'];
+    $pk = $_POST['pk'];
+    $success_url = $_POST['success_url'];
+    $page = new UpdatePage($form_class, $modelClass, $pk, $success_url);
+    $page->render();
+}
+else
+    deleteToken();

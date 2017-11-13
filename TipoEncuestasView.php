@@ -6,7 +6,12 @@
  * Time: 15:54
  */
 require_once (__DIR__ . '/Pages/pages.php');
+include 'token.php';
 
-
-$pagina = new MasterPage("TipoEncuesta");
-$pagina->render();
+if(checkToken() && isset($_COOKIE['token']))
+{
+    $pagina = new MasterPage("TipoEncuesta");
+    $pagina->render();
+}
+else
+    deleteToken();

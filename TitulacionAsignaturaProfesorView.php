@@ -7,7 +7,13 @@
  */
 
 require_once (__DIR__ . '/Pages/pages.php');
+include 'token.php';
 
+if(isset($_COOKIE['token']) && checkToken())
+{
 
-$pagina = new MasterPage("TitulacionAsignaturaProfesor");
-$pagina->render();
+    $pagina = new MasterPage("TitulacionAsignaturaProfesor");
+    $pagina->render();
+}
+else
+    deleteToken();

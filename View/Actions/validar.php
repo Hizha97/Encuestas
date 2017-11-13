@@ -22,6 +22,9 @@ if($result->fetchColumn() == 1)
 {
     $token = new Token;
     $token->save();
+    if(isset($_COOKIE['token']))
+        unset($_COOKIE['token']);
+
     setcookie("token", $token->numero_token->getValue(), time() + 1800, '/');
     header('Location: ' . $_POST["success_url"]);
 }
