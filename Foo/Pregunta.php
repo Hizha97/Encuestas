@@ -26,7 +26,7 @@ class Pregunta extends Model
                                                                                           'CheckboxField' => 'Casilla de marcado' ,
                                         'ChoiceField' => "Radios de selección", 'DateField' => 'Fecha',
                                         'MultipleSelectField' => 'Selección multiple', 'SelectField' => 'Campo de selección',
-                                        'SwitchField' => 'Switch'));
+                                        'SwitchField' => 'Switch', "TextAreaField" => "Texto libre"));
         $this->abrev = new CharField('abrev', 'Abreviatura de la pregunta');
         parent::__construct($initial);
     }

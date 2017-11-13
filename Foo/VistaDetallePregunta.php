@@ -70,6 +70,9 @@ class VistaDetallePregunta
             case "DateField":
                 $renderable = new DateField($nameAttributeOfPregunta, $this->model->abrev->getValue());
                 break;
+            case "TextAreaField":
+                $renderable = new TextAreaField($nameAttributeOfPregunta, $this->model->abrev->getValue());
+                break;
         }
         $render = Col(Layout(new StringToRenderable($this->model->pregunta->getValue()), $renderable), "s12");
         $render->render();
