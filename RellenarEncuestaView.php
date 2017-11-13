@@ -33,7 +33,7 @@ class RellenarEncuestaView extends BasePage
         echo '</nav>';
         echo '</div>';
 
-        $encuesta = new EncuestaForm($tipoencuesta->initial, "#", "POST", "TipoEncuesta", "");
+        $encuesta = new EncuestaForm($tipoencuesta->initial, "crearEncuesta.php", "POST", "TipoEncuesta", "");
         echo '<div class = "container">';
 
         $encuesta->render();

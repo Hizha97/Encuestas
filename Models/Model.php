@@ -153,9 +153,8 @@ class Model
 
         $stmt = $db->prepare($finalQuery);
         $stmt->execute($params);
-
         $lastId = $db->lastInsertId();
-
+        $this->id = $lastId;
 
         foreach (get_object_vars($this) as $attribute => $value) {
             if (is_object($value))
@@ -202,7 +201,6 @@ class Model
 
         $stmt = $db->prepare($query);
         $stmt->execute($params);
-        print_r($stmt->errorInfo());
 
         foreach (get_object_vars($this) as $attribute => $value) {
             if (is_object($value))
@@ -220,6 +218,8 @@ class Model
                     $labIdDest = "id" . $dest;
                     $finalQuery = sprintf("INSERT INTO %s(%s, %s, %s) VALUES(?, ?, ?);", strtolower(get_called_class()) . 's_' . $dest . 's', $labIdOr, $labIdDest, 'ordering');
                     $stmt = $db->prepare($finalQuery);
+
+
                     print_r($value->getValue());
 
                     foreach ($value->getValue()['ids'] as $ids) {

@@ -32,37 +32,47 @@ class VistaDetallePregunta
         $tipo = $this->model->tipo->getValue();
 
         if($tipo === 'MultipleSelectField' or $tipo === 'SelectField')
-            foreach (explode(';',$this->model->posiblesRespuestas->getValue()) as  $posibleRespuesta)
-                $dictValues[$posibleRespuesta] = $posibleRespuesta;
+        {
+            if($this->model->esRelacionado->getValue() == "Si")
+            {
+                $relatedClassName = $this->model->posiblesRespuestas->getValue();
+                $modelosRelacionados = ($relatedClassName)::getAll();
+                foreach ($modelosRelacionados as  $posibleRespuesta)
+                    $dictValues[$posibleRespuesta->id] = $posibleRespuesta->__toString();
+            }
+            else
+                foreach (explode(';',$this->model->posiblesRespuestas->getValue()) as  $posibleRespuesta)
+                    $dictValues[$posibleRespuesta] = $posibleRespuesta;
+        }
 
+
+        $nameAttributeOfPregunta = "pregunta_" . $this->model->id;
         switch ($tipo)
         {
             case "CharField":
-                $renderable = new CharField($this->model->id , $this->model->abrev->getValue());
+                $renderable = new CharField($nameAttributeOfPregunta , $this->model->abrev->getValue());
                 break;
             case "CheckboxField":
-                $renderable = new CheckboxField($this->model->id, $this->model->posiblesRespuestas->getValue());
+                $renderable = new CheckboxField($nameAttributeOfPregunta, $this->model->posiblesRespuestas->getValue());
                 break;
             case "ChoiceField":
-                $renderable = new ChoiceField($this->model->id, $this->model->posiblesRespuestas->getValue());
+                $renderable = new ChoiceField($nameAttributeOfPregunta, $this->model->posiblesRespuestas->getValue());
                 break;
             case "MultipleSelectField":
-                $renderable = new MultipleSelectField($this->model->id, $this->model->abrev->getValue(), $dictValues);
+                $renderable = new MultipleSelectField($nameAttributeOfPregunta, $this->model->abrev->getValue(), $dictValues);
                 break;
             case "SelectField":
-                $renderable = new SelectField($this->model->id, $this->model->abrev->getValue(), $dictValues);
+                $renderable = new SelectField($nameAttributeOfPregunta, $this->model->abrev->getValue(), $dictValues);
                 break;
             case "SwitchField":
-                $renderable = new SwitchField($this->model->id, $this->model->posiblesRespuestas->getValue());
+                $renderable = new SwitchField($nameAttributeOfPregunta, $this->model->posiblesRespuestas->getValue());
                 break;
             case "DateField":
-                $renderable = new DateField($this->model->id, $this->model->abrev->getValue());
+                $renderable = new DateField($nameAttributeOfPregunta, $this->model->abrev->getValue());
                 break;
         }
-        echo '<form>';
         $render = Col(Layout(new StringToRenderable($this->model->pregunta->getValue()), $renderable), "s12");
         $render->render();
-        echo '</form>';
     }
 
 

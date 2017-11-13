@@ -14,7 +14,7 @@ class TitulacionAsignaturaProfesor extends Model
     public $asignatura;
     public $profesor;
 
-    public function __construct($initial)
+    public function __construct($initial = array())
     {
         $this->titulacion = new CharField('titulacion', 'Titulacion');
         $this->asignatura = new CharField('asignatura', 'Asignatura');
@@ -22,4 +22,8 @@ class TitulacionAsignaturaProfesor extends Model
         parent::__construct($initial);
     }
 
+    public function __toString()
+    {
+        return sprintf("%s | %s | %s", $this->titulacion->getValue(), $this->asignatura->getValue(), $this->profesor->getValue());
+    }
 }

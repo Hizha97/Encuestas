@@ -14,11 +14,14 @@ class Pregunta extends Model
     public $posiblesRespuestas;
     public $tipo;
     public $abrev;
+    public $esRelacionado;
 
     public function __construct($initial = array())
     {
         $this->pregunta = new CharField('pregunta', 'Pregunta');
         $this->posiblesRespuestas = new CharField('posiblesRespuestas', 'Posibles Respuestas(dejar vacío si no procede)', '', false);
+        $this->esRelacionado = new SelectField("esRelacionado", "La respuesta es una tabla", array("No" => "No", "Si" => "Si"), "No");
+
         $this->tipo = new SelectField('tipo', 'Tipo de pregunta', array('CharField' => 'Campo Texto',
                                                                                           'CheckboxField' => 'Casilla de marcado' ,
                                         'ChoiceField' => "Radios de selección", 'DateField' => 'Fecha',
@@ -30,7 +33,6 @@ class Pregunta extends Model
 
     public function __toString()
     {
-        // TODO: Implement __toString() method.
         return sprintf("%s (%s)", $this->abrev->getValue(), $this->id);
     }
 

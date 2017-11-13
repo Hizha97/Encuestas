@@ -14,7 +14,11 @@ class MenuPage extends BasePage
     public function body()
     {
         // TODO: Implement body() method.
-        $navbar = new Navbar("Encuestas", array(BASE_URL . "/TipoEncuestasView.php" => "Tipos de encuesta", BASE_URL . "/SeccionesView.php " => "Secciones", BASE_URL . "/PreguntasView.php" => "Preguntas"));
+        $navbar = new Navbar("Encuestas", array(BASE_URL . "/TipoEncuestasView.php" => "Tipos de encuesta",
+            BASE_URL . "/SeccionesView.php " => "Secciones",
+            BASE_URL . "/PreguntasView.php" => "Preguntas",
+            BASE_URL . "/TitulacionAsignaturaProfesorView.php" => "Titulaciones | Asignaturas | Profesores",
+            BASE_URL . "/UsuariosView.php" => "Usuarios"));
         $navbar->render();
     }
 
