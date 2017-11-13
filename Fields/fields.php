@@ -17,3 +17,4 @@ require_once(__DIR__.'/SelectField.php');
 require_once(__DIR__.'/ForeignKey.php');
 require_once(__DIR__.'/OneToMany.php');
 require_once(__DIR__.'/TextAreaField.php');
+require_once(__DIR__ . '/IntegerField.php');

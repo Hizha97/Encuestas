@@ -10,7 +10,7 @@ class PaginaLogin extends BasePage
 {
     public function body()
     {
-        $login = new Form(array(),BASE_URL . '/View/Actions/validar.php','POST', 'Usuario', 'index.php');
+        $login = new Form(array(),BASE_URL . '/View/Actions/validar.php','POST', 'Usuario', BASE_URL);
         $login->render();
     }
 
