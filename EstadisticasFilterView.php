@@ -6,15 +6,16 @@
  * Time: 23:42
  */
 
-require_once (__DIR__ . '/Models/models.php');
-require_once (__DIR__ . '/Pages/pages.php');
+require_once(__DIR__ . '/Models/models.php');
+require_once(__DIR__ . '/Pages/pages.php');
+
+
 $tipoDeEncuesta = $_POST['id'];
 
 $preguntas = array();
 
-foreach($_POST as $key => $value)
-    if(strstr($key, 'pregunta_') != FALSE)
-    {
+foreach ($_POST as $key => $value)
+    if (strstr($key, 'pregunta_') != FALSE) {
         $keyExploded = explode('_', $key);
         $idPregunta = $keyExploded[1];
         $val = $value;

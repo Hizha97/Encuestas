@@ -7,8 +7,7 @@
  */
 
 
-
-require_once(__DIR__."/../../Models/models.php");
+require_once(__DIR__ . "/../../Models/models.php");
 
 $modelClass = $_POST['modelClass'];
 $success_url = $_POST['success_url'];
@@ -19,7 +18,7 @@ unset($initial['modelClass']);
 unset($initial['action']);
 unset($initial['success_url']);
 
-if(isset($initial['password']))
+if (isset($initial['password']))
     $initial['password'] = hash("sha256", $initial['password']);
 $model = new $modelClass($initial);
 

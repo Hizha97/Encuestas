@@ -6,7 +6,8 @@
  * Time: 11:27
  */
 
-require_once (__DIR__.'/../RenderTrait.php');
+require_once(__DIR__ . '/../RenderTrait.php');
+
 class Navbar
 {
     use RenderTrait;
@@ -28,8 +29,7 @@ class Navbar
 
         echo sprintf("<ul id='%s' class ='%s'>", 'nav-mobile', 'right hide-on-med-and-down');
 
-        foreach ($this->links as $index => $value)
-        {
+        foreach ($this->links as $index => $value) {
             echo "<li>";
             echo sprintf("<a class='truncate' href = '%s'> %s </a>", $index, $value);
             echo "</li>";
@@ -38,12 +38,11 @@ class Navbar
 
         echo '<ul class="side-nav" id="mobile-demo">';
 
-         foreach ($this->links as $index => $value)
-         {
-             echo "<li>";
-             echo sprintf("<a class='truncate' href = '%s'> %s </a>", $index, $value);
-             echo "</li>";
-         }
+        foreach ($this->links as $index => $value) {
+            echo "<li>";
+            echo sprintf("<a class='truncate' href = '%s'> %s </a>", $index, $value);
+            echo "</li>";
+        }
 
         echo '</ul>';
         echo '</div>';

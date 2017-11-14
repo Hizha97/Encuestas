@@ -6,17 +6,15 @@
  * Time: 17:46
  */
 
-require_once (__DIR__ . '/Pages/pages.php');
-require_once (__DIR__ . '/Models/models.php');
-include 'token.php';
+require_once(__DIR__ . '/Pages/pages.php');
+require_once(__DIR__ . '/Models/models.php');
+include_once 'token.php';
 
 
-if(isset($_COOKIE['token']) && checkToken())
-{
+if (isset($_COOKIE['token']) && checkToken()) {
     $pagina = new MenuPage;
     $pagina->render();
-}
-else
+} else
     deleteToken();
 
 

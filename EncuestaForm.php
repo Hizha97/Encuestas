@@ -7,8 +7,9 @@
  */
 
 require_once("Forms/Form.php");
-require_once (__DIR__ . '/Models/models.php');
-require_once(__DIR__ .'/Foo/VistaDetallePregunta.php');
+require_once(__DIR__ . '/Models/models.php');
+require_once(__DIR__ . '/Foo/VistaDetallePregunta.php');
+
 class EncuestaForm extends Form
 {
 
@@ -25,14 +26,12 @@ class EncuestaForm extends Form
         $tituloEncuesta = new StringToRenderable(sprintf("<h1> %s </h1>", $v->titulo->getValue()));
         //array_push($renderables, $tituloEncuesta);
 
-        foreach($v->secciones->getValue()['ids'] as $seccionId)
-        {
+        foreach ($v->secciones->getValue()['ids'] as $seccionId) {
             $seccion = Seccion::get($seccionId);
             $tituloSeccion = new StringToRenderable(sprintf("<h3 class='teal-text lighten-2'> %s </h3>", $seccion->titulo->getValue()));
             array_push($renderables, $tituloSeccion);
 
-            foreach($seccion->preguntas->getValue()['ids'] as $preguntaId)
-            {
+            foreach ($seccion->preguntas->getValue()['ids'] as $preguntaId) {
                 $pregunta = Pregunta::get($preguntaId);
                 array_push($renderables, Row(new VistaDetallePregunta($pregunta)));
             }

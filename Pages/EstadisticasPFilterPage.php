@@ -10,6 +10,7 @@ class EstadisticasPFilterPage extends MenuPage
 {
     public $pkTipoEncuesta;
     public $encuestasId;
+
     public function __construct($pkTipoEncuesta, $encuestasId)
     {
         $this->pkTipoEncuesta = $pkTipoEncuesta;

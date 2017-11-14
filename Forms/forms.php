@@ -6,6 +6,6 @@
  * Time: 21:03
  */
 
-require_once (__DIR__.'/Form.php');
-require_once (__DIR__.'/TipoEncuestaSelectFieldsForm.php');
-require_once (__DIR__.'/TipoEncuestasSelectFieldsForResultsForm.php');
+require_once(__DIR__ . '/Form.php');
+require_once(__DIR__ . '/TipoEncuestaSelectFieldsForm.php');
+require_once(__DIR__ . '/TipoEncuestasSelectFieldsForResultsForm.php');

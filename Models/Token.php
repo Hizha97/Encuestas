@@ -5,8 +5,8 @@
  * Date: 13/11/17
  * Time: 19:19
  */
-require_once (__DIR__."/../Models/Model.php");
-require_once (__DIR__."/../Fields/fields.php");
+require_once(__DIR__ . "/../Models/Model.php");
+require_once(__DIR__ . "/../Fields/fields.php");
 
 class Token extends Model
 {
@@ -28,7 +28,7 @@ class Token extends Model
     public function expirated()
     {
         $horaActual = date("Y-m-d H:i:s");
-        $horaActual->sub(DateInterval::createFromDateString( 'PT' . $this->expiration_time->getValue() .  'S'));
+        $horaActual->sub(DateInterval::createFromDateString('PT' . $this->expiration_time->getValue() . 'S'));
 
         return ($horaActual >= $this->expiration_time);
 

@@ -5,13 +5,11 @@
  * Date: 11/11/2017
  * Time: 15:54
  */
-require_once (__DIR__ . '/Pages/pages.php');
-include 'token.php';
+require_once(__DIR__ . '/Pages/pages.php');
+require_once(__DIR__ . '/token.php');
 
-if(checkToken() && isset($_COOKIE['token']))
-{
+if (checkToken() && isset($_COOKIE['token'])) {
     $pagina = new MasterPage("TipoEncuesta");
     $pagina->render();
-}
-else
+} else
     deleteToken();

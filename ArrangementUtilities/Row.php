@@ -6,7 +6,7 @@
  * Time: 21:14
  */
 
-require_once (__DIR__ . '/../RenderTrait.php');
+require_once(__DIR__ . '/../RenderTrait.php');
 
 
 class __Row
@@ -22,7 +22,7 @@ class __Row
     public function render()
     {
         echo "<div class='row'>";
-        foreach($this->fields as $field)
+        foreach ($this->fields as $field)
             $field->render();
         echo '</div>';
     }

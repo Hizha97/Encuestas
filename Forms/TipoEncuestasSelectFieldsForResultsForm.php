@@ -22,16 +22,14 @@ class TipoEncuestasSelectFieldsForResultsForm extends Form
     {
         $v = $this->model;
         $preguntas = array();
-        foreach($this->encuestasId as $id)
+        foreach ($this->encuestasId as $id)
             array_push($preguntas, new StringToRenderable(sprintf("<input type='hidden' value='%s' name='%s'>", $id, "encuesta_" . $id)));
 
-        foreach($v->secciones->getValue()['ids'] as $seccionId)
-        {
+        foreach ($v->secciones->getValue()['ids'] as $seccionId) {
             $seccion = Seccion::get($seccionId);
-            foreach($seccion->preguntas->getValue()['ids'] as $preguntaId)
-            {
+            foreach ($seccion->preguntas->getValue()['ids'] as $preguntaId) {
                 $pregunta = Pregunta::get($preguntaId);
-                $checkbox = new CheckboxField('pregunta_'.$preguntaId, $pregunta->__toString(), "", false);
+                $checkbox = new CheckboxField('pregunta_' . $preguntaId, $pregunta->__toString(), "", false);
                 array_push($preguntas, $checkbox);
             }
         }

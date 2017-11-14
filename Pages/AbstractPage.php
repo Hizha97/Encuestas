@@ -6,16 +6,11 @@
  * Time: 13:10
  */
 
-require_once(__DIR__."/../RenderTrait.php");
+require_once(__DIR__ . "/../RenderTrait.php");
 
 abstract class AbstractPage
 {
     use RenderTrait;
-
-    abstract public function head();
-    abstract public function beforeBodyScripts();
-    abstract public function body();
-    abstract public function afterBodyScripts();
 
     public function render()
     {
@@ -35,5 +30,13 @@ abstract class AbstractPage
         echo '</script>';
         echo '</html>';
     }
+
+    abstract public function head();
+
+    abstract public function beforeBodyScripts();
+
+    abstract public function body();
+
+    abstract public function afterBodyScripts();
 }
 

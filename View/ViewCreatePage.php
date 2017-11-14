@@ -7,14 +7,14 @@
  */
 
 require_once(__DIR__ . '/../Pages/pages.php');
-include __DIR__  . '/../token.php';
+require_once(__DIR__ . '/../token.php');
 
-if(isset($_COOKIE['token']) && checkToken()) {
+
+if (isset($_COOKIE['token']) && checkToken()) {
     $modelClass = $_POST['modelClass'];
     $success_url = $_POST['success_url'];
     $form_class = $_POST['form_class'];
     $page = new CreatePage($form_class, $modelClass, $success_url);
     $page->render();
-}
-else
+} else
     deleteToken();

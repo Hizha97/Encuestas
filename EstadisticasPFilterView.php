@@ -42,15 +42,13 @@ foreach ($respuestas as $idPregunta => $filtroResp) {
             else
                 array_push($params, $filtroResp);
         }
-    }
-    else{
+    } else {
         $query = $query . sprintf(" AND (pregunta=? ");
         array_push($params, $idPregunta);
 
-        foreach(explode(';', $filtroResp) as $filtro)
-        {
+        foreach (explode(';', $filtroResp) as $filtro) {
             $query = $query . sprintf(" OR respuesta like ?");
-            array_push($params, '%'.$filtro.'%');
+            array_push($params, '%' . $filtro . '%');
         }
         $query = $query . ")";
 
@@ -66,7 +64,7 @@ $stmt = $db->prepare($query);
 $stmt->execute($params);
 
 foreach ($stmt->fetchAll() as $result) {
-    if(array_search($result['encuesta'], $respFilteredId) == false)
+    if (array_search($result['encuesta'], $respFilteredId) == false)
         array_push($respFilteredId, $result['encuesta']);
 }
 

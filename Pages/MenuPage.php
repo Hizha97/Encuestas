@@ -6,8 +6,8 @@
  * Time: 20:54
  */
 
-require_once (__DIR__.'/BasePage.php');
-require_once (__DIR__.'/../settings.php');
+require_once(__DIR__ . '/BasePage.php');
+require_once(__DIR__ . '/../settings.php');
 
 class MenuPage extends BasePage
 {

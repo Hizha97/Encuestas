@@ -22,7 +22,7 @@ class RadioButton
      */
     public function __construct($name, $verbose_name, $selected)
     {
-        $this->id = uniqid("RadioButton_" , true);
+        $this->id = uniqid("RadioButton_", true);
         $this->name = $name;
         $this->verbose_name = $verbose_name;
         $this->selected = $selected;
@@ -31,7 +31,7 @@ class RadioButton
     public function render()
     {
         echo "<p>";
-        if($this->selected == false)
+        if ($this->selected == false)
             echo sprintf("<input type='%s' id='%s' name='%s' value='%s' required>", "radio", $this->id, $this->name, $this->verbose_name);
         else
             echo sprintf("<input type='%s' id='%s' name='%s' value='%s' checked='checked' required>", "radio", $this->id, $this->name, $this->verbose_name);

@@ -5,9 +5,9 @@
  * Date: 02/11/2017
  * Time: 3:14
  */
-require_once (__DIR__."/../Fields/fields.php");
-require_once ("models.php");
-require_once (__DIR__."/../DatabaseConnection.php");
+require_once(__DIR__ . "/../Fields/fields.php");
+require_once("models.php");
+require_once(__DIR__ . "/../DatabaseConnection.php");
 
 class Model
 {
@@ -34,14 +34,6 @@ class Model
 
         if (array_key_exists('id', $initial))
             $this->id = $initial['id'];
-    }
-
-    public function get_context_data()
-    {
-        $attr = array_values(get_object_vars($this));
-
-
-        return $attr;
     }
 
     static public function getAll()
@@ -125,6 +117,14 @@ class Model
         $db = $GLOBALS['db'];
         $stmt = $db->prepare($query);
         $stmt->execute(array($pk));
+    }
+
+    public function get_context_data()
+    {
+        $attr = array_values(get_object_vars($this));
+
+
+        return $attr;
     }
 
     public function save()

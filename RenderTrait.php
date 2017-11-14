@@ -8,5 +8,7 @@
 
 trait RenderTrait
 {
-    public function render(){}
+    public function render()
+    {
+    }
 }

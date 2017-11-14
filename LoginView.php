@@ -5,7 +5,7 @@
  * Date: 11/11/17
  * Time: 18:11
  */
-require_once (__DIR__ . '/Pages/pages.php');
+require_once(__DIR__ . '/Pages/pages.php');
 require_once(__DIR__ . '/PaginaLogin.php');
 
 

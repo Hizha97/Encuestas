@@ -13,13 +13,11 @@ class TipoEncuestaSelectFieldsForm extends Form
         $v = $this->model;
         $preguntas = array();
 
-        foreach($v->secciones->getValue()['ids'] as $seccionId)
-        {
+        foreach ($v->secciones->getValue()['ids'] as $seccionId) {
             $seccion = Seccion::get($seccionId);
-            foreach($seccion->preguntas->getValue()['ids'] as $preguntaId)
-            {
+            foreach ($seccion->preguntas->getValue()['ids'] as $preguntaId) {
                 $pregunta = Pregunta::get($preguntaId);
-                $checkbox = new CheckboxField('pregunta_'.$preguntaId, $pregunta->__toString(), "", false);
+                $checkbox = new CheckboxField('pregunta_' . $preguntaId, $pregunta->__toString(), "", false);
                 array_push($preguntas, $checkbox);
             }
         }

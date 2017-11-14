@@ -6,7 +6,7 @@
  * Time: 9:56
  */
 
-require_once (__DIR__ . '/Field.php');
+require_once(__DIR__ . '/Field.php');
 
 class PasswordField extends Field
 {
@@ -15,7 +15,7 @@ class PasswordField extends Field
         $requiredParameter = "";
 
         $this->preInputField();
-        if($this->required)
+        if ($this->required)
             $requiredParameter = "required";
 
         echo sprintf("<input type='%s' id='%s' name='%s' value='%s' %s>", "password", $this->id, $this->name, $this->value, $requiredParameter);

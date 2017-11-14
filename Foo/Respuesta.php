@@ -6,8 +6,8 @@
  * Time: 0:59
  */
 
-require_once (__DIR__."/../Models/Model.php");
-require_once (__DIR__."/../Fields/fields.php");
+require_once(__DIR__ . "/../Models/Model.php");
+require_once(__DIR__ . "/../Fields/fields.php");
 
 class Respuesta extends Model
 {

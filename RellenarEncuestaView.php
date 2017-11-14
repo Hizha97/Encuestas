@@ -6,9 +6,10 @@
  * Time: 19:09
  */
 
-require_once (__DIR__ . '/Pages/pages.php');
-require_once (__DIR__ . '/Models/models.php');
-require_once (__DIR__ . '/EncuestaForm.php');
+require_once(__DIR__ . '/Pages/pages.php');
+require_once(__DIR__ . '/Models/models.php');
+require_once(__DIR__ . '/EncuestaForm.php');
+
 class RellenarEncuestaView extends BasePage
 {
     public $pk;

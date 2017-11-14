@@ -6,7 +6,7 @@
  * Time: 9:26
  */
 
-require_once (__DIR__ . '/Field.php');
+require_once(__DIR__ . '/Field.php');
 
 class CharField extends Field
 {
@@ -15,7 +15,7 @@ class CharField extends Field
         $requiredParameter = "";
 
         $this->preInputField();
-        if($this->required)
+        if ($this->required)
             $requiredParameter = "required";
 
         echo sprintf("<input type='%s' id='%s' name='%s' value='%s' %s>", "text", $this->id, $this->name, $this->value, $requiredParameter);

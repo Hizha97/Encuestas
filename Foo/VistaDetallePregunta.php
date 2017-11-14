@@ -7,8 +7,8 @@
  */
 
 
-require_once (__DIR__.'/../RenderTrait.php');
-require_once (__DIR__.'/../ArrangementUtilities/arrangementUtilities.php');
+require_once(__DIR__ . '/../RenderTrait.php');
+require_once(__DIR__ . '/../ArrangementUtilities/arrangementUtilities.php');
 
 class VistaDetallePregunta
 {
@@ -31,26 +31,22 @@ class VistaDetallePregunta
         $dictValues = array();
         $tipo = $this->model->tipo->getValue();
 
-        if($tipo === 'MultipleSelectField' or $tipo === 'SelectField')
-        {
-            if($this->model->esRelacionado->getValue() == "Si")
-            {
+        if ($tipo === 'MultipleSelectField' or $tipo === 'SelectField') {
+            if ($this->model->esRelacionado->getValue() == "Si") {
                 $relatedClassName = $this->model->posiblesRespuestas->getValue();
                 $modelosRelacionados = ($relatedClassName)::getAll();
-                foreach ($modelosRelacionados as  $posibleRespuesta)
+                foreach ($modelosRelacionados as $posibleRespuesta)
                     $dictValues[$posibleRespuesta->id] = $posibleRespuesta->__toString();
-            }
-            else
-                foreach (explode(';',$this->model->posiblesRespuestas->getValue()) as  $posibleRespuesta)
+            } else
+                foreach (explode(';', $this->model->posiblesRespuestas->getValue()) as $posibleRespuesta)
                     $dictValues[$posibleRespuesta] = $posibleRespuesta;
         }
 
 
         $nameAttributeOfPregunta = "pregunta_" . $this->model->id;
-        switch ($tipo)
-        {
+        switch ($tipo) {
             case "CharField":
-                $renderable = new CharField($nameAttributeOfPregunta , $this->model->abrev->getValue());
+                $renderable = new CharField($nameAttributeOfPregunta, $this->model->abrev->getValue());
                 break;
             case "CheckboxField":
                 $renderable = new CheckboxField($nameAttributeOfPregunta, $this->model->posiblesRespuestas->getValue());

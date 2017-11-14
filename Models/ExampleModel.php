@@ -6,7 +6,7 @@
  * Time: 22:00
  */
 
-require_once(__DIR__."/../Fields/fields.php");
+require_once(__DIR__ . "/../Fields/fields.php");
 
 class ExampleModel extends Model
 {
@@ -22,7 +22,7 @@ class ExampleModel extends Model
     public function __construct($initial)
     {
         $this->campoAdicional = new DateField("campoAdicional", "Fecha");
-        $this->texto = new CharField( "texto", "Texto", '', false);
+        $this->texto = new CharField("texto", "Texto", '', false);
         $this->password = new PasswordField("password", "password");
         $this->checkbox = new CheckboxField("checkbox", "Check si antonio es un xulo");
         $this->switch = new SwitchField("switch", "off", "on");

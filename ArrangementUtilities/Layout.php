@@ -6,7 +6,7 @@
  * Time: 3:38
  */
 
-require_once (__DIR__ . '/../RenderTrait.php');
+require_once(__DIR__ . '/../RenderTrait.php');
 
 class __Layout
 {
@@ -24,7 +24,7 @@ class __Layout
 
     public function render()
     {
-        foreach($this->renderables as $renderable) {
+        foreach ($this->renderables as $renderable) {
             if (method_exists($renderable, "render"))
                 $renderable->render();
         }

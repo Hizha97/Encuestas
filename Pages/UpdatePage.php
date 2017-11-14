@@ -6,8 +6,8 @@
  * Time: 20:59
  */
 
-require_once (__DIR__."/pages.php");
-require_once (__DIR__."/../Forms/forms.php");
+require_once(__DIR__ . "/pages.php");
+require_once(__DIR__ . "/../Forms/forms.php");
 
 class UpdatePage extends MenuPage
 {
@@ -15,6 +15,7 @@ class UpdatePage extends MenuPage
     public $modelClass;
     public $pk;
     public $success_url;
+
     /**
      * UpdatePage constructor.
      * @param $formClass
@@ -40,7 +41,7 @@ class UpdatePage extends MenuPage
         echo "<br>";
         echo sprintf("<h2 class='teal-text lighten-2'>Editar %s</h2>", $this->modelClass);
 
-        if(isset($realModel->initial['password']))
+        if (isset($realModel->initial['password']))
             $realModel->initial['password'] = '';
         $form = new $this->formClass($realModel->initial, "Actions/update.php", "POST", $this->modelClass, $this->success_url);
         $form->render();

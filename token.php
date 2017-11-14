@@ -5,7 +5,7 @@
  * Date: 13/11/17
  * Time: 23:33
  */
-require_once(__DIR__."/DatabaseConnection.php");
+require_once(__DIR__ . "/DatabaseConnection.php");
 
 function checkToken()
 {

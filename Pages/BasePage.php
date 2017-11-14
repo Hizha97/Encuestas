@@ -5,8 +5,8 @@
  * Date: 11/11/2017
  * Time: 19:04
  */
-require_once (__DIR__.'/AbstractPage.php');
-require_once (__DIR__.'/../settings.php');
+require_once(__DIR__ . '/AbstractPage.php');
+require_once(__DIR__ . '/../settings.php');
 
 abstract class BasePage extends AbstractPage
 {
@@ -48,6 +48,7 @@ abstract class BasePage extends AbstractPage
 
         echo '});';
     }
+
     public function afterBodyScripts()
     {
         // TODO: Implement afterBodyScripts() method.

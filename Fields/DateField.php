@@ -6,7 +6,7 @@
  * Time: 9:14
  */
 
-require_once (__DIR__ . '/Field.php');
+require_once(__DIR__ . '/Field.php');
 
 class DateField extends Field
 {
@@ -16,7 +16,7 @@ class DateField extends Field
         $requiredParameter = "";
 
         $this->preInputField();
-        if($this->required)
+        if ($this->required)
             $requiredParameter = "required";
 
         echo sprintf("<input type='%s' class='%s' id='%s' name='%s' data-value='%s' %s>", "text", "datepicker", $this->id, $this->name, $this->value, $requiredParameter);

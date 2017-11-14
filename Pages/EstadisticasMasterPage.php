@@ -6,7 +6,7 @@
  * Time: 18:58
  */
 
-require_once (__DIR__.'/../Pages/pages.php');
+require_once(__DIR__ . '/../Pages/pages.php');
 
 class EstadisticasMasterPage extends MenuPage
 {
@@ -27,18 +27,14 @@ class EstadisticasMasterPage extends MenuPage
 
         echo sprintf("<h2 class='teal-text lighten-2'> Lista de %s </h2>", $this->modelClass);
 
-        if (count($models) == 0)
-        {
+        if (count($models) == 0) {
             echo sprintf("<p class='teal-text lighten-2 flow-text' style='font-weight: 100;'> No hay registros todavia. </p>", $this->modelClass);
-        }
-        else
-        {
+        } else {
 
             echo '<table><thead>';
             echo '<tr>';
             foreach (get_object_vars($models[0]) as $attr => $value)
-                if(is_subclass_of($value, "Field"))
-                {
+                if (is_subclass_of($value, "Field")) {
                     echo '<th>';
                     echo $value->getVerboseName();
                     echo '</th>';
@@ -47,14 +43,12 @@ class EstadisticasMasterPage extends MenuPage
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
-            foreach($models as $model)
-            {
+            foreach ($models as $model) {
                 echo '<tr>';
                 foreach (get_object_vars($model) as $attr => $value)
-                    if(is_subclass_of($value, "Field"))
-                    {
+                    if (is_subclass_of($value, "Field")) {
                         echo '<td>';
-                        if(get_class($value) == "OneToMany")
+                        if (get_class($value) == "OneToMany")
                             echo implode(';', $value->getValue()['ids']);
                         else
                             echo $value->getValue();

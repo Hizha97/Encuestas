@@ -6,7 +6,7 @@
  * Time: 10:29
  */
 
-require_once (__DIR__ . '/Field.php');
+require_once(__DIR__ . '/Field.php');
 
 
 class CheckboxField extends Field
@@ -17,12 +17,12 @@ class CheckboxField extends Field
         $requiredParameter = "";
 
         echo "<p>";
-        if($this->required)
+        if ($this->required)
             $requiredParameter = "required";
 
         $format = "<input type='%s' id='%s' %s name='%s' %s>";
 
-        if($this->value === '')
+        if ($this->value === '')
             $str = sprintf($format, "checkbox", $this->id, "", $this->name, $requiredParameter);
         else
             $str = sprintf($format, "checkbox", $this->id, "checked='checked'", $this->name, $requiredParameter);

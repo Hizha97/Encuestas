@@ -6,7 +6,7 @@
  * Time: 9:26
  */
 
-require_once (__DIR__ . '/Field.php');
+require_once(__DIR__ . '/Field.php');
 
 class TextAreaField extends Field
 {
@@ -15,10 +15,10 @@ class TextAreaField extends Field
         $requiredParameter = "";
 
         $this->preInputField();
-        if($this->required)
+        if ($this->required)
             $requiredParameter = "required";
 
-        echo sprintf("<textarea id='%s' name='%s' style='min-height:100px;' class='materialize-textarea' value='%s' %s></textarea>",  $this->id, $this->name, $this->value, $requiredParameter);
+        echo sprintf("<textarea id='%s' name='%s' style='min-height:100px;' class='materialize-textarea' value='%s' %s></textarea>", $this->id, $this->name, $this->value, $requiredParameter);
         echo sprintf("<label for='%s' > %s </label>", $this->id, $this->verbose_name);
         $this->postInputField();
     }
