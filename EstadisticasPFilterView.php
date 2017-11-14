@@ -55,7 +55,7 @@ foreach ($respuestas as $idPregunta => $filtroResp) {
     }
     if (end($respuestas) != $filtroResp) {
         array_push($params, $tipoDeEncuesta);
-        $query = $query . ' INTERSECT ' . $queryBase;
+        $query = $query . ' UNION ' . $queryBase;
     }
 
 }
