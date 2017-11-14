@@ -14,12 +14,14 @@ class Respuesta extends Model
     public $respuesta;
     public $pregunta;
     public $encuesta;
+    public $tipoencuesta;
 
     public function __construct($initial = array())
     {
         $this->respuesta = new CharField('respuesta', 'Respuesta');
         $this->pregunta = new ForeignKey('pregunta', 'Pregunta relacionada', 'Pregunta');
         $this->encuesta = new ForeignKey('encuesta', 'Encuesta relacionada', 'Encuesta');
+        $this->tipoencuesta = new ForeignKey('tipoencuesta', "Tipo de encuesta relacionada", "TipoEncuesta");
         parent::__construct($initial);
     }
 

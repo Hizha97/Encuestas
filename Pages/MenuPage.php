@@ -18,7 +18,8 @@ class MenuPage extends BasePage
             BASE_URL . "/SeccionesView.php " => "Secciones",
             BASE_URL . "/PreguntasView.php" => "Preguntas",
             BASE_URL . "/TitulacionAsignaturaProfesorView.php" => "Titulaciones | Asignaturas | Profesores",
-            BASE_URL . "/UsuariosView.php" => "Usuarios"));
+            BASE_URL . "/UsuariosView.php" => "Usuarios",
+            BASE_URL . "/EstadisticaEncuestasView.php" => "Estadisticas"));
         $navbar->render();
     }
 

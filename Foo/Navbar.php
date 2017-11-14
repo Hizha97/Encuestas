@@ -23,15 +23,15 @@ class Navbar
     {
         echo "<nav>";
         echo sprintf("<div class = '%s'>", "nav-wrapper");
-        echo sprintf("<a href='%s' class = '%s' > %s </a>", '#!', 'brand-logo center', $this->title);
+        echo sprintf("<a href='%s' class = '%s' > %s </a>", '#!', 'brand-logo left hide-on-med-and-down', $this->title);
         echo sprintf('<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>');
 
-        echo sprintf("<ul id='%s' class ='%s'>", 'nav-mobile', 'left hide-on-med-and-down');
+        echo sprintf("<ul id='%s' class ='%s'>", 'nav-mobile', 'right hide-on-med-and-down');
 
         foreach ($this->links as $index => $value)
         {
             echo "<li>";
-            echo sprintf("<a href = '%s'> %s </a>", $index, $value);
+            echo sprintf("<a class='truncate' href = '%s'> %s </a>", $index, $value);
             echo "</li>";
         }
         echo '</ul>';
@@ -41,7 +41,7 @@ class Navbar
          foreach ($this->links as $index => $value)
          {
              echo "<li>";
-             echo sprintf("<a href = '%s'> %s </a>", $index, $value);
+             echo sprintf("<a class='truncate' href = '%s'> %s </a>", $index, $value);
              echo "</li>";
          }
 

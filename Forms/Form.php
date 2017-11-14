@@ -45,13 +45,15 @@ class Form
 
         $this->layout()->render();
 
+        echo "<div class='row' style='margin-top:20px;'>";
         echo  '<a class="btn waves-effect waves-light" style="margin-right:20px;" onclick="history.back()">Volver</a>';
         echo sprintf('<button class="btn waves-effect waves-light" type="submit" name="action" id="%s">Enviar
         <i class="material-icons right">send</i>
         </button>',  hash("sha256", spl_object_hash($this)) . "Action");
 
 
-        echo "</form>";
+        echo "</div></form>";
+
     }
 
     public function layout()

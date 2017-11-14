@@ -26,6 +26,6 @@ foreach($_POST as $key => $value)
         $val = $value;
         if(is_array($value))
             $val = implode(";", $value);
-        $respuestaNueva = new Respuesta(array("pregunta" => $idPregunta, "respuesta" => $val, "encuesta" => $encuestaPk));
+        $respuestaNueva = new Respuesta(array("pregunta" => $idPregunta, "respuesta" => $val, "encuesta" => $encuestaPk, "tipoencuesta" => $tipoDeEncuesta));
         $respuestaNueva->save();
     }
