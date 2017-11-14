@@ -9,7 +9,7 @@
 require_once(__DIR__ . '/Pages/pages.php');
 
 
-require_once(__DIR__ . '/token.php');
+include(__DIR__ . '/token.php');
 
 if (isset($_COOKIE['token']) && checkToken()) {
     $page = new EstadisticasMasterPage('TipoEncuesta');

@@ -12,8 +12,10 @@ function checkToken()
     $db = $GLOBALS['db'];
     $sql = "SELECT numero_token FROM tokens";
     $result = $db->query($sql);
-    $token = $result->fetch(PDO::FETCH_ASSOC);
-    return $token['numero_token'] == $_COOKIE['token'];
+    foreach($result->fetchAll() as $token)
+        if ($token['numero_token'] == $_COOKIE['token'])
+            return true;
+    return false;
 }
 
 function deleteToken()

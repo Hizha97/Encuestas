@@ -6,7 +6,7 @@
  * Time: 15:54
  */
 require_once(__DIR__ . '/Pages/pages.php');
-require_once(__DIR__ . '/token.php');
+include(__DIR__ . '/token.php');
 
 if (checkToken() && isset($_COOKIE['token'])) {
     $pagina = new MasterPage("TipoEncuesta");
